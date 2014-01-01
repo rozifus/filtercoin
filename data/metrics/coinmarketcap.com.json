@@ -1,0 +1,10 @@
+{
+    item: {
+        type: "metrics"
+        name: "coinmarketcap.com"
+        href: "http://www.coinmarketcap.com"
+        coins: [
+            "bitcoin", "altcoins", "non-mineable"
+        ]
+    }
+}
