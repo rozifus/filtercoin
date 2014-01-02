@@ -1,9 +1,9 @@
 {
-    item: {
-        type: "news"
-        name: "coindesk.com"
-        href: "http://www.coindesk.com"
-        coins: [
+    "item": {
+        "type": "news",
+        "name": "coindesk.com",
+        "href": "http://www.coindesk.com",
+        "coins": [
             "bitcoin", "altcoins", "non-mineable"
         ]
     }

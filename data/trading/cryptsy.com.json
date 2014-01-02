@@ -1,9 +1,9 @@
 {
-    item: {
-        type: "trading"
-        name: "cryptsy.com"
-        href: "http://www.cryptsy.com"
-        coins: [
+    "item": {
+        "type": "trading",
+        "name": "cryptsy.com",
+        "href": "http://www.cryptsy.com",
+        "coins": [
             "bitcoin", "altcoins"
         ]
     }
