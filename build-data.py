@@ -28,7 +28,10 @@ if __name__ == "__main__":
     files = getFiles(INPUT_DIR)
     items = []
     for f_loc in files:
-        items.append(getJsonFromFile(f_loc)["item"])
+        item = getJsonFromFile(f_loc)
+        if "item" in item:
+            item = item["item"]
+        items.append(item)
     writeJsonToFile(items, OUTPUT_DIR + os.sep + OUTPUT_NAME)
 
 
