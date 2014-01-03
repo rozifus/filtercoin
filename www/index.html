@@ -16,7 +16,8 @@
   <script src="./lib/semantic/packaged/javascript/semantic.js"></script>
     
   <link rel="stylesheet" type="text/css" href="feed.css">
-  <script src="feed.js"></script>
+  <script src="./lib/filtercoin/interface.js"></script>
+  <script src="./lib/filtercoin/init.js"></script>
 
 </head>
 <body id="feed">
@@ -38,11 +39,15 @@
   </div>
   -->
 
-  <div class="ui large vertical inverted icon menu sidebar" id="filter_menu">
+  <div class="ui large vertical inverted icon menu sidebar" style="overflow-y:scroll;" id="filter_menu">
     <div class="ui vertical">
       <a class="item">
         <i class="home icon"></i>
         <label>Home</label>
+      </a>
+      <a class="item">
+        <i class="certificate icon"></i>
+        <label>Favorites</label>
       </a>
       <a class="item">
         <i class="exchange icon"></i>
@@ -76,10 +81,7 @@
         <i class="setting icon"></i>
         <label>Settings</label>
       </a>
-
-
     </div>
-
   </div>
   <div class="ui black huge launch right attached button">
     <i class="icon arrow left"></i>
