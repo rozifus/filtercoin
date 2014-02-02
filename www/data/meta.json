@@ -1,0 +1,64 @@
+[
+    {
+        "meta": "section"
+        "name": "Section",
+        "items": [
+            "metrics",
+            "buy",
+            "sell",
+            "trade",
+            "goods",
+            "services"
+        ]
+    },
+    {
+        "meta": "language",
+        "name": "Language",
+        "items": [
+            {
+                "english": "English",
+                "native": "English"
+            },
+            {
+                "english": "Chinese",
+                "native": "简体中文"
+            }
+        ]
+    }
+    {
+        "meta": "currency",
+        "name": "Currency",
+        "items": [
+            {
+                "code": "AUD",
+                "name": "Australian Dollar"
+            },
+            {
+                "code": "USD",
+                "name": "United States Dollar"
+            }
+        ]
+    },
+    {
+        "meta": "crypto",
+        "name": "Crypto",
+        "items": [
+            {
+                "code": "BTC",
+                "name": "Bitcoin"
+            },
+            {
+                "code": "DOGE",
+                "name": "Dogecoin"
+            },
+            {
+                "code": "LTC",
+                "name": "Litecoin"
+            },
+            {
+                "code": "ZET",
+                "name": "Zetacoin"
+            }
+        ]
+    }
+}
