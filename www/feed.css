@@ -35,6 +35,20 @@ body {
 }
 
 /*-------------------
+        Main
+--------------------*/
+
+.ui.header .icon:only-child {
+  vertical-align: middle;
+}
+
+.ui.segment .ui.segment.piled {
+    margin-top: 1em;
+}
+
+
+
+/*-------------------
         Grid
 --------------------*/
 
