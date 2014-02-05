@@ -92,12 +92,60 @@
     <div class="ui segment">
       <h2 class="ui dividing header">
         Filters&nbsp; 
-        <div class="ui mini icon button">
+        <div class="ui mini button icon">
           <i class="green icon plus"></i>
         </div>
       </h2>
-      <div class="ui segment piled red">
-        <div id="filter_list" class="ui celled list">
+      <div class="ui form segment piled green">
+        <div class="ui field buttons">
+          <div class="ui button red icon">
+            <i class="remove icon"></i>
+          </div>
+          <div class="or"></div>
+          <div class="ui button green icon">
+            Create
+          </div>
+        </div>
+        <div class="ui field">
+          <div class="ui action input">
+            <input type="text" placeholder="">
+              <div class="ui button icon">
+                <i class="magic icon"></i>
+              </div>
+            </input>
+          </div>
+        </div>
+        <div id="new_filter" class="ui">
+        </div>
+      </div>
+      <div id="filter_list">
+        <div class="ui segment piled red">
+          <div class="ui top right attached red label">1525</div>
+          <div class="ui bottom right attached red label">153</div>
+          <div class="ui divided grid">
+            <div class="ui row">
+              <div class="ui action input">
+                <input type="text" placeholder="">
+                  <div class="ui button icon">
+                    <i class="magic icon"></i>
+                  </div>
+                  <div class="ui button icon">
+                    <i class="red remove icon"></i>
+                  </div>
+                </input>
+              </div>
+            </div>
+            <div class="ui row">
+              <div class="sixteen wide column">
+                <div class="ui action input">
+                  <input type="text" placeholder="">
+                  <div class="ui button right icon">
+                    <i class="magic icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

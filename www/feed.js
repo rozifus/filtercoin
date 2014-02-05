@@ -9,6 +9,11 @@ $(document)
       .sidebar('attach events', '.launch.button')
     ;
 
+    $('.ui.filter-modal')
+      .modal()
+    ;
+
+
     /*
     $('.ui.rating')
       .rating({
