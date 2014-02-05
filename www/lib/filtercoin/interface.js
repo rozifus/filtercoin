@@ -10,6 +10,8 @@ Interface.DATA = null;
 
 POST_LIST = "messages";
 
+INPUT_FILTERS = "input_filters";
+
 SEND_FORM = "send-form";
 SEND_IMG_PREVIEW = "send-img-preview";
 SEND_TEXT_INPUT = "send-message";
@@ -31,6 +33,15 @@ Interface.prototype.displayMessage = function(message) {
 Interface.prototype.uploadImgSelected = function() {
     this.previewImg();
 };
+
+Interface.prototype.readFilters = function() {
+    var f = jebi( INPUT_FILTERS )
+            .val().trim().toLowerCase().split(" ");
+    return f.filter(function(item) { return item != "" });
+}
+
+Interface.prototype.parseFilters = function() {
+}
 
 Interface.prototype.previewImg = function() {
     var preview     = gebi( SEND_IMG_PREVIEW ),
