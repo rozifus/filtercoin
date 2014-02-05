@@ -34,6 +34,14 @@ Interface.prototype.uploadImgSelected = function() {
     this.previewImg();
 };
 
+Interface.prototype.getFilters = function() {
+    var t = this
+    console.log("wat");
+    var f = t.readFilters()
+    console.log(f)
+
+}
+
 Interface.prototype.readFilters = function() {
     var f = jebi( INPUT_FILTERS )
             .val().trim().toLowerCase().split(" ");
@@ -102,6 +110,8 @@ Interface.prototype.init = function() {
         return false;
     })
 
-    jebi( SEND_BUTTON ).click(this.SendMessage);
+    jebi( SEND_BUTTON ).click(t.SendMessage);
+
+    jebi( INPUT_FILTERS ).on("input", $.proxy(this.getFilters, this));
 }
 
