@@ -7,16 +7,11 @@ Interface.EMPTY_IMG = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAA
 Interface.EMPTY_TEXT = "";
 
 Interface.DATA = null;
+Interface.LOADING = 1;
 
 POST_LIST = "messages";
 
 INPUT_FILTERS = "input_filters";
-
-SEND_FORM = "send-form";
-SEND_IMG_PREVIEW = "send-img-preview";
-SEND_TEXT_INPUT = "send-message";
-SEND_IMG_INPUT = "send-img-input";
-SEND_BUTTON = "send-button"
 
 Interface.prototype.displayMessage = function(message) {
     var text_data   = message.text || Interface.EMPTY_TEXT,
@@ -34,12 +29,16 @@ Interface.prototype.uploadImgSelected = function() {
     this.previewImg();
 };
 
-Interface.prototype.getFilters = function() {
-    var t = this
-    console.log("wat");
-    var f = t.readFilters()
-    console.log(f)
+Interface.prototype.update = function() {
+    if (Interface.LOADING) { return };
 
+    var f = this.readFilters(),
+        p = this.parseFilters(f);
+
+}
+
+Interface.filterResults = function() {
+    results = JSON.parse(JSON.stringify(Interface.data))
 }
 
 Interface.prototype.readFilters = function() {
@@ -48,7 +47,9 @@ Interface.prototype.readFilters = function() {
     return f.filter(function(item) { return item != "" });
 }
 
-Interface.prototype.parseFilters = function() {
+Interface.prototype.parseFilters = function(filters) {
+    console.log(filters)
+    return filters
 }
 
 Interface.prototype.previewImg = function() {
@@ -93,9 +94,17 @@ Interface.prototype.sendMessage = function() {
 
 Interface.prototype.loadData = function() {
     $.getJSON("data/data.json", function(data) {
-        console.log(data)
+        Interface.DATA = data;
     });
 }
+
+Interface.prototype.loadModel = function() {
+    $.getJSON("data/model.json", function(data) {
+        Interface.DATA = data;
+    });
+}
+
+
 
 Interface.renderCoin = function(json) {
 
@@ -104,14 +113,11 @@ Interface.renderCoin = function(json) {
 Interface.prototype.init = function() {
     var t = this;
 
-    Interface.DATA = t.loadData()
-    jebi( SEND_FORM ).submit(function() {
-        t.sendMessage()
-        return false;
-    })
+    Interface.DATA  = t.loadData()
+    Interface.MODEL = t.loadModel()
 
     jebi( SEND_BUTTON ).click(t.SendMessage);
 
-    jebi( INPUT_FILTERS ).on("input", $.proxy(this.getFilters, this));
+    jebi( INPUT_FILTERS ).on("input", $.proxy(this.update, this));
 }
 
