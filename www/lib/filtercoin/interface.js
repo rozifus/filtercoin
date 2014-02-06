@@ -29,8 +29,16 @@ Interface.prototype.uploadImgSelected = function() {
     this.previewImg();
 };
 
+Interface.prototype.loaded = function() {
+    if (typeof(Interface.DATA) == "undefined" ||
+       typeof(Interface.MODEL) == "undefined") {
+            return false
+    }
+    return true
+}
+
 Interface.prototype.update = function() {
-    if (Interface.LOADING) { return };
+    if (!this.loaded()) { return };
 
     var f = this.readFilters(),
         p = this.parseFilters(f);
@@ -104,7 +112,7 @@ Interface.prototype.loadModel = function() {
     console.log("loading model..")
     $.getJSON("data/model.json", function(model) {
         Interface.MODEL = model;
-        console.log("loaded data!")
+        console.log("loaded model!")
     });
 }
 
