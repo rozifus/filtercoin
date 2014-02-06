@@ -93,14 +93,18 @@ Interface.prototype.sendMessage = function() {
 }
 
 Interface.prototype.loadData = function() {
+    console.log("loading data..")
     $.getJSON("data/data.json", function(data) {
         Interface.DATA = data;
+        console.log("loaded data!")
     });
 }
 
 Interface.prototype.loadModel = function() {
-    $.getJSON("data/model.json", function(data) {
-        Interface.DATA = data;
+    console.log("loading model..")
+    $.getJSON("data/model.json", function(model) {
+        Interface.MODEL = model;
+        console.log("loaded data!")
     });
 }
 
@@ -113,10 +117,8 @@ Interface.renderCoin = function(json) {
 Interface.prototype.init = function() {
     var t = this;
 
-    Interface.DATA  = t.loadData()
-    Interface.MODEL = t.loadModel()
-
-    jebi( SEND_BUTTON ).click(t.SendMessage);
+    t.loadData()
+    t.loadModel()
 
     jebi( INPUT_FILTERS ).on("input", $.proxy(this.update, this));
 }
