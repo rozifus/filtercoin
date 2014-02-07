@@ -9,8 +9,7 @@ $(document)
       .sidebar('attach events', '.launch.button')
     ;
 
-    interface = new Interface();
-    interface.init();
+    inter.init();
     console.log('INIT')
   })
 ;

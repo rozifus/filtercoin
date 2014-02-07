@@ -1,89 +1,96 @@
 
-var Interface = function() {};
-var gebi = function(id) { return document.getElementById(id); };
-var jebi = function(id) { return $("#" + id) };
+(function () {
 
-Interface.EMPTY_IMG = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-Interface.EMPTY_TEXT = "";
+    var inter = {};
 
-Interface.DATA = null;
-Interface.LOADING = 1;
+    var gebi = function(id) { return document.getElementById(id); };
+    var jebi = function(id) { return $("#" + id) };
 
-POST_LIST = "messages";
+    var INPUT_FILTERS = "input_filters";
 
-INPUT_FILTERS = "input_filters";
+    inter.fullUpdate = function() {
+        //if (!this.loaded()) { return };
 
-Interface.prototype.fullUpdate = function() {
-    if (!this.loaded()) { return };
+        var f = readFilters(),
+            p = parseFilters(f);
+        var results = [];
+        inter.DATA.forEach(function(item) {
+            results.push(item);
+        });
+        this.renderResults(results);
+    };
 
-    var f = this.readFilters(),
-        p = this.parseFilters(f);
-    var results = [];
-    Interface.DATA.forEach(function(item) {
-        results.push(item);
-    });
-    this.renderResults(results);
-};
-
-Interface.prototype.renderResults = function(results) {
-    console.log(results.length, results)
-};
+    inter.renderResults = function(results) {
+        console.log(results.length, results)
+    };
 
 
-Interface.filterResults = function() {
-    results = JSON.parse(JSON.stringify(Interface.DATA));
-};
+    inter.filterResults = function() {
+        results = JSON.parse(JSON.stringify(inter.DATA));
+    };
 
-Interface.prototype.readFilters = function() {
-    var f = jebi( INPUT_FILTERS )
-            .val().trim().toLowerCase().split(" ");
-    return f.filter(function(item) { return item != "" });
-}
+    var readFilters = function() {
+        var f = jebi( INPUT_FILTERS )
+                .val().trim().toLowerCase().split(" ");
+        return f.filter(function(item) { return item != "" });
+    }
 
-Interface.prototype.parseFilters = function(filters) {
-    console.log(filters)
-    return filters
-}
+    var parseFilters = function(filters) {
+        console.log(filters)
+        return filters
+    }
 
-Interface.prototype.loadData = function() {
-    console.log("loading data..")
-    $.getJSON("data/data.json", function(data) {
-        Interface.DATA = data;
-        console.log("loaded data!")
-        callback()
-    });
-}
+    var genPathsAndAliases = function(callback) {
 
-Interface.prototype.loadModel = function() {
-    console.log("loading model..")
-    $.getJSON("data/model.json", function(model) {
-        Interface.MODEL = model;
-        console.log("loaded model!")
-    });
-}
+    }
 
-Interface.prototype.getPathsAndAliases
+    var loadData = function(cb) {
+        console.log("loading data..")
+        $.getJSON("data/data.json", function(data) {
+            inter.DATA = data;
+            console.log("loaded data!");
+            cb(null);
+        });
+    }
 
+    var loadModel = function(cb) {
+        console.log("loading model..")
+        $.getJSON("data/model.json", function(model) {
+            inter.MODEL = model;
+            console.log("loaded model!");
+            cb(null);
+        });
+    }
 
+    var genPathsAndAliases = function(cb) {
+        console.log("gen");
+        cb();
+    }
 
-Interface.renderCoin = function(json) {
+    var bindControls = function(cb) {
 
-}
+        jebi( INPUT_FILTERS ).on("input", inter.fullUpdate);
 
-Interface.prototype.genPathsAndAliases = function() {
+        cb(null);
+    }
 
-}
+    inter.init = function() {
 
+        var t = this;
 
-Interface.prototype.init = function() {
-    var t = this;
+        async.series([
+            function(scb) {
+                async.parallel(
+                    [ loadData, loadModel ],
+                    function(err, results) { scb(err); }
+                );
+            },
+            genPathsAndAliases,
+            bindControls
+        ]);
 
-    t.loadData(t.loadModel())
-    t.loadData()
-    t.loadModel()
+    }
 
-    t.genPathsAndAliases()
+    this.inter = inter;
 
-    jebi( INPUT_FILTERS ).on("input", $.proxy(this.update, this));
-}
-
+}());
