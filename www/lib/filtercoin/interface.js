@@ -13,41 +13,26 @@ POST_LIST = "messages";
 
 INPUT_FILTERS = "input_filters";
 
-Interface.prototype.displayMessage = function(message) {
-    var text_data   = message.text || Interface.EMPTY_TEXT,
-        img_data    = message.img || Interface.EMPTY_IMG,
-        text_elem   = $("</p>", {text: text_data}),
-        img_elem    = $("</img>", {src: img_data}),
-        post        = $("</div>").append(img_elem).append(text_elem);
-
-    jebi( POST_LIST ).append("<div class='ui segment'><img src=" + img_data +
-                          "></img><p>" + text_data +
-                          "</p></div>");
-};
-
-Interface.prototype.uploadImgSelected = function() {
-    this.previewImg();
-};
-
-Interface.prototype.loaded = function() {
-    if (typeof(Interface.DATA) == "undefined" ||
-       typeof(Interface.MODEL) == "undefined") {
-            return false
-    }
-    return true
-}
-
-Interface.prototype.update = function() {
+Interface.prototype.fullUpdate = function() {
     if (!this.loaded()) { return };
 
     var f = this.readFilters(),
         p = this.parseFilters(f);
+    var results = [];
+    Interface.DATA.forEach(function(item) {
+        results.push(item);
+    });
+    this.renderResults(results);
+};
 
-}
+Interface.prototype.renderResults = function(results) {
+    console.log(results.length, results)
+};
+
 
 Interface.filterResults = function() {
-    results = JSON.parse(JSON.stringify(Interface.data))
-}
+    results = JSON.parse(JSON.stringify(Interface.DATA));
+};
 
 Interface.prototype.readFilters = function() {
     var f = jebi( INPUT_FILTERS )
@@ -60,51 +45,12 @@ Interface.prototype.parseFilters = function(filters) {
     return filters
 }
 
-Interface.prototype.previewImg = function() {
-    var preview     = gebi( SEND_IMG_PREVIEW ),
-        input       = gebi( SEND_IMG_INPUT ),
-        file        = input && input.files && input.files[0],
-        reader      = new FileReader();
-
-    if (file) {
-        reader.onloadend = function() {
-            preview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = Interface.EMPTY_IMG;
-    };
-}
-
-Interface.prototype.buildMessage = function(text, img) {
-
-}
-
-Interface.prototype.sendMessage = function() {
-    var room      = '/' + $('#send-room').val(),
-        text_data = jebi( SEND_TEXT_INPUT ).val() || Interface.EMPTY_TEXT,
-        img_input = gebi( SEND_IMG_INPUT ),
-        img_file  = img_input && img_input.files && img_input.files[0],
-        reader    = new FileReader();
-
-    if (img_file) {
-        reader.onloadend = function() {
-            chat && chat.sendMessage(room, {text: text_data,
-                                            img: reader.result});
-        }
-        reader.readAsDataURL(img_file);
-    } else {
-        chat && chat.sendMessage(room, {text: text_data} );
-    };
-    // clear file upload + textbox
-    return false;
-}
-
 Interface.prototype.loadData = function() {
     console.log("loading data..")
     $.getJSON("data/data.json", function(data) {
         Interface.DATA = data;
         console.log("loaded data!")
+        callback()
     });
 }
 
@@ -116,17 +62,27 @@ Interface.prototype.loadModel = function() {
     });
 }
 
+Interface.prototype.getPathsAndAliases
+
 
 
 Interface.renderCoin = function(json) {
 
 }
 
+Interface.prototype.genPathsAndAliases = function() {
+
+}
+
+
 Interface.prototype.init = function() {
     var t = this;
 
+    t.loadData(t.loadModel())
     t.loadData()
     t.loadModel()
+
+    t.genPathsAndAliases()
 
     jebi( INPUT_FILTERS ).on("input", $.proxy(this.update, this));
 }

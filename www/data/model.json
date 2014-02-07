@@ -1,80 +1,65 @@
 [
     {
-        "comment": {
-        "code": "section",
-        "name": "Section",
-        "items": [
-            "metrics",
-            "buy",
-            "sell",
-            "trade",
-            "goods",
-            "services"
-        ]
-        }
-    },
-    {
-        "comment": {
-        "code": "language",
-        "name": "Language",
-        "items": [
-            {
-                "code": ["chinese", "简体中文"],
-                "name": "简体中文"
-            }
-        ]
-        }
-    },
-    {
         "code": ["currency", "fiat"],
         "name": "Currency",
         "items": [
             {
-                "code": "aud",
+                "id": "aud",
+                "code": ["aud"],
                 "name": "[AUD] Australian Dollar"
             },
             {
-                "code": "usd",
+                "id": "usd",
+                "code": ["usd"],
                 "name": "[USD] U.S. Dollar"
             }
         ]
     },
     {
+        "id": "crypto",
         "code": ["crypto", "cryptos"],
         "name": "Cryptos",
         "items": [
             {
+                "id": "btc",
                 "code": ["btc, bitcoin"],
                 "name": "[BTC] Bitcoin"
             },
             {
+                "id": "alt",
                 "code": ["alt", "alts", "altcoin", "altcoins"],
                 "name": "Altcoins",
                 "items": [
                     {
+                        "id": "doge",
                         "code": ["doge", "dogecoin"],
                         "name": "[DOGE] Dogecoin"
                     },
                     {
+                        "id": "ltc",
                         "code": ["ltc", "litecoin"],
                         "name": "[LTC] Litecoin"
                     },
                     {
+                        "zet": "zet",
                         "code": ["zet", "zetacoin"],
                         "name": "[ZET] Zetacoin"
                     }
                 ]
             },
             {
-                "code": ["nextgen", "secondgen"],
+                "id": "nextgen",
+                "code": ["nextgen", "secondgen", "2.0", "crypto2.0"],
                 "name": "SecondGen",
                 "items": [
                     {
+                        "id": "nxt",
                         "code": ["nxt", "nextcoin"],
                         "name": "[NXT] Nextcoin"
                     },
                     {
-                        "code": ["ripple", "ripplecoin"],
+                        "id": "xrp",
+                        "code": ["xrp", "ripple", "ripplecoin"],
                         "name": ["[XRP] Ripple"]
                     }
                 ]
