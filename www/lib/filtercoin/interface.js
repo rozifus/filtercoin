@@ -40,10 +40,6 @@
         return filters
     }
 
-    var genPathsAndAliases = function(callback) {
-
-    }
-
     var loadData = function(cb) {
         console.log("loading data..")
         $.getJSON("data/data.json", function(data) {
@@ -63,9 +59,32 @@
     }
 
     var genPathsAndAliases = function(cb) {
-        console.log("gen");
-        cb();
-    }
+        inter.FILTERABLE = {};
+        inter.ALIAS  = {};
+
+        buildFilterable(inter.MODEL, []);
+        console.log(inter.FILTERABLE, inter.ALIAS)
+        cb(null);
+    };
+
+    var buildFilterable = function(node, path) {
+        path.push(node.id)
+        inter.ALIAS[node.id] = node.id
+        for (var iA = 0; iA < node.alias.length; iA++) {
+            inter.ALIAS[node.alias[iA]] = node.id
+        }
+        filterable = {
+            name: node.name,
+            path: path
+        }
+        inter.FILTERABLE[node.id] = filterable
+        if (node.sub) {
+            for (var iS = 0; iS < node.sub.length; iS++) {
+                buildFilterable(node.sub[iS], path.slice() )
+            }
+        };
+
+    };
 
     var bindControls = function(cb) {
 
@@ -75,8 +94,6 @@
     }
 
     inter.init = function() {
-
-        var t = this;
 
         async.series([
             function(scb) {
