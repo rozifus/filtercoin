@@ -17,15 +17,15 @@
         inter.DATA.forEach(function(item) {
             results.push(item);
         });
-        this.renderResults(results);
+        renderResults(results);
     };
 
-    inter.renderResults = function(results) {
+    var renderResults = function(results) {
         console.log(results.length, results)
     };
 
 
-    inter.filterResults = function() {
+    var filterResults = function() {
         results = JSON.parse(JSON.stringify(inter.DATA));
     };
 
