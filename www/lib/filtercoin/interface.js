@@ -11,13 +11,23 @@
     inter.fullUpdate = function() {
         //if (!this.loaded()) { return };
 
-        var f = readFilters(),
-            p = parseFilters(f);
-        var results = [];
-        inter.DATA.forEach(function(item) {
-            results.push(item);
+        var f     = readFilters(),
+            p     = parseFilters(f),
+            fables = getFilterables(p);
+            data  = inter.DATA,
+            res   = [];
+        console.log("parsed", p)
+        console.log("fables", fables)
+        fables.forEach(function(fable) {
+            res = runFilter(data, fable.path)
+            data = res;
         });
-        renderResults(results);
+        console.log(res)
+        //renderResults(results);
+    };
+
+    var runFilter = function(data, path) {
+        return [];
     };
 
     var renderResults = function(results) {
@@ -65,6 +75,15 @@
         buildFilterable(inter.MODEL, []);
         console.log(inter.FILTERABLE, inter.ALIAS)
         cb(null);
+    };
+
+    var getFilterables = function(aliases) {
+        var fables = []
+        aliases.forEach(function(alias) {
+            var f = inter.ALIAS[alias];
+            fables.push(inter.FILTERABLE[f]);
+        });
+        return fables
     };
 
     var buildFilterable = function(node, path) {

@@ -5,7 +5,7 @@
     "sub": [
         {
             "id": "fiat",
-            "alias": ["currency", "fiat"],
+            "alias": ["currency"],
             "name": "Currency",
             "sub": [
                 {
