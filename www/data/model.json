@@ -36,9 +36,9 @@
                     ]
                 },
                 {
-                    "id": "invest",
-                    "alias": ["investment"],
-                    "name": "Investment",
+                    "id": "trade",
+                    "alias": ["invest", "investment", "buy", "sell", "exchange", "swap"],
+                    "name": "Trade",
                     "sub": [
                         {
                             "id": "stock",
