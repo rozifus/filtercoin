@@ -20,8 +20,20 @@
                 },
                 {
                     "id": "news",
-                    "alias": [],
+                    "alias": ["article", "articles"],
                     "name": "News"
+                },
+                {
+                    "id": "data",
+                    "alias": ["metric", "metrics"],
+                    "name": "Data",
+                    "sub": [
+                        {
+                            "id": "chart",
+                            "alias": ["graphs", "graphing", "charts"],
+                            "name": "Chart"
+                        }
+                    ]
                 },
                 {
                     "id": "invest",

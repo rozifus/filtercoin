@@ -11,29 +11,39 @@
     inter.fullUpdate = function() {
         //if (!this.loaded()) { return };
 
-        var f     = readFilters(),
-            p     = parseFilters(f),
+        var f      = readFilters(),
+            p      = parseFilters(f),
             fables = getFilterables(p);
-            data  = inter.DATA,
-            res   = [];
+            data   = inter.DATA,
+            res    = []
+            fcount = 0;
         console.log("parsed", p)
         console.log("fables", fables)
         fables.forEach(function(fable) {
-            res = runFilter(data, fable.path)
+            res = runFilter(data, fable.path, fcount)
             data = res;
+            fcount += 1
         });
+        if (fcount == 0) {
+            resetMatches(data);
+        };
         console.log(data)
         //renderResults(data);
     };
 
-    var runFilter = function(data, path) {
+    var runFilter = function(data, path, fcount) {
         fdata = []
         data.forEach(function(d) {
             console.log("d", d)
             var tags = d.tags
-            for (var i = 0; i < tags.length; i++ ) {
-                for (var j = 0; j < path.length; j++ ) {
-                    if (tags[i] == path[j]) {
+            for (var p = path.length - 1; p >= 0; p-- ) {
+                for (var t = 0; t < tags.length; t++ ) {
+                    if (tags[t] == path[p]) {
+                        if (fcount > 0) {
+                            d.match = d.match * ((p+1)/path.length)
+                        } else {
+                            d.match = ((p+1)/path.length)
+                        };
                         fdata.push(d)
                         return
                     }
@@ -42,6 +52,12 @@
         });
         console.log(data)
         return fdata;
+    };
+
+    var resetMatches = function(data) {
+        data.forEach(function(d) {
+            d.match = 1;
+        });
     };
 
     var renderResults = function(results) {
