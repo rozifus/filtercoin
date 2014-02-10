@@ -4,6 +4,112 @@
     "name": "Everything",
     "sub": [
         {
+            "id": "type",
+            "alias": [],
+            "name": "Type",
+            "sub": [
+                {
+                    "id": "goods",
+                    "alias": ["good"],
+                    "name": "Goods"
+                },
+                {
+                    "id": "services",
+                    "alias": "service",
+                    "name": "Services"
+                },
+                {
+                    "id": "news",
+                    "alias": [],
+                    "name": "News"
+                },
+                {
+                    "id": "invest",
+                    "alias": ["investment"],
+                    "name": "Investment",
+                    "sub": [
+                        {
+                            "id": "stock",
+                            "alias": ["stocks", "cryptostock", "cryptostocks"],
+                            "name": "Stocks"
+                        }
+                    ]
+                },
+                {
+                    "id": "software",
+                    "alias": ["program", "programs", "utility", "utilites", "tool", "tools"],
+                    "name": "Software",
+                    "sub": [
+                        {
+                            "id": "app",
+                            "alias": ["apps"],
+                            "name": "App",
+                            "sub": [
+                                {
+                                    "id": "android",
+                                    "alias": [],
+                                    "name": "Android"
+                                },
+                                {
+                                    "id": "blackberry",
+                                    "alias": "bb8",
+                                    "name": "BlackBerry"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "mining",
+                    "alias": "mine",
+                    "name": "Mining",
+                    "sub": [
+                        {
+                            "id": "pool",
+                            "alias": ["pools"],
+                            "name": "Pool"
+                        }
+                    ]
+                },
+                {
+                    "id": "discussion",
+                    "alias": ["discussions"],
+                    "name": "Discussion",
+                    "sub": [
+                        {
+                            "id": "chat",
+                            "alias": ["livechat"],
+                            "name": "Chat",
+                            "sub": [
+                                {
+                                    "id": "irc",
+                                    "alias": [],
+                                    "name": "IRC"
+                                },
+                                {
+                                    "id": "chatbox",
+                                    "alias": ["trollbox"],
+                                    "name": "ChatBox"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "forum",
+                            "alias": ["forums"],
+                            "name": "Forum",
+                            "sub": [
+                                {
+                                    "id": "thread",
+                                    "alias": ["threads"],
+                                    "name": "Thread"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "id": "fiat",
             "alias": ["currency"],
             "name": "Currency",
@@ -22,7 +128,7 @@
         },
         {
             "id": "crypto",
-            "alias": ["crypto", "cryptos"],
+            "alias": ["crypto", "cryptos", "cryptocurrency", "cyptocurrencies"],
             "name": "Cryptos",
             "sub": [
                 {
@@ -59,12 +165,12 @@
                     "sub": [
                         {
                             "id": "nxt",
-                            "alias": ["nxt", "nextcoin"],
-                            "name": "[NXT] Nextcoin"
+                            "alias": ["nxtcoin"],
+                            "name": "[NXT] Nxt"
                         },
                         {
                             "id": "xrp",
-                            "alias": ["xrp", "ripple", "ripplecoin"],
+                            "alias": ["ripple", "ripplecoin"],
                             "name": ["[XRP] Ripple"]
                         }
                     ]

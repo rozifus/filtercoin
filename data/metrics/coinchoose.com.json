@@ -1,11 +1,6 @@
 {
-    "item": {
-        "type": "metrics",
-        "name": "coinchoose.com",
-        "href": "http://www.coinchoose.com",
-        "coins": [
-            "bitcoin", "altcoins"
-        ]
-    }
+    "name": "coinchoose.com",
+    "href": "http://www.coinchoose.com",
+    "tags": ["metric", "alt", "btc"]
 }
 

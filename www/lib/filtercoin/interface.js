@@ -22,12 +22,26 @@
             res = runFilter(data, fable.path)
             data = res;
         });
-        console.log(res)
-        //renderResults(results);
+        console.log(data)
+        //renderResults(data);
     };
 
     var runFilter = function(data, path) {
-        return [];
+        fdata = []
+        data.forEach(function(d) {
+            console.log("d", d)
+            var tags = d.tags
+            for (var i = 0; i < tags.length; i++ ) {
+                for (var j = 0; j < path.length; j++ ) {
+                    if (tags[i] == path[j]) {
+                        fdata.push(d)
+                        return
+                    }
+                }
+            }
+        });
+        console.log(data)
+        return fdata;
     };
 
     var renderResults = function(results) {
@@ -36,7 +50,7 @@
 
 
     var filterResults = function() {
-        results = JSON.parse(JSON.stringify(inter.DATA));
+        //results = JSON.parse(JSON.stringify(inter.DATA));
     };
 
     var readFilters = function() {
@@ -81,7 +95,9 @@
         var fables = []
         aliases.forEach(function(alias) {
             var f = inter.ALIAS[alias];
-            fables.push(inter.FILTERABLE[f]);
+            if (f) {
+                fables.push(inter.FILTERABLE[f]);
+            }
         });
         return fables
     };

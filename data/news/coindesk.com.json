@@ -1,10 +1,5 @@
 {
-    "item": {
-        "type": "news",
-        "name": "coindesk.com",
-        "href": "http://www.coindesk.com",
-        "coins": [
-            "bitcoin", "altcoins", "non-mineable"
-        ]
-    }
+    "name": "coindesk.com",
+    "href": "http://www.coindesk.com",
+    "tags": [ "crypto", "news" ]
 }

@@ -1,8 +1,5 @@
 {
-    "type": "metrics",
     "name": "bitcoinwisdom.com",
     "href": "http://www.bitcoinwisdom.com",
-    "coins": [
-        "bitcoin", "altcoins", "non-mineable"
-    ]
+    "tags": [ "btc", "ltc", "doge", "metric" ]
 }
