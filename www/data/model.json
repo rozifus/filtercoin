@@ -45,6 +45,11 @@
                             "alias": ["stocks", "cryptostock", "cryptostocks"],
                             "name": "Stocks"
                         }
+                        {
+                            "id": "crypto/crypto",
+                            "alias": ["cryptos/cryptos"],
+                            "name": "Cryptos/Cryptos"
+                        }
                     ]
                 },
                 {
@@ -188,6 +193,6 @@
                     ]
                 }
             ]
-        }
+        },
     ]
 }
