@@ -1,161 +1,8 @@
 {
-    "id": "filters",
-    "alias": ["filter", "all", "everything"],
-    "name": "Filters",
+    "id": "everything",
+    "alias": ["all", "everything"],
+    "name": "Everything",
     "sub": [
-        {
-            "id": "type",
-            "alias": [],
-            "name": "Type",
-            "sub": [
-                {
-                    "id": "goods",
-                    "alias": ["good"],
-                    "name": "Goods"
-                },
-                {
-                    "id": "services",
-                    "alias": "service",
-                    "name": "Services"
-                },
-                {
-                    "id": "news",
-                    "alias": ["article", "articles"],
-                    "name": "News"
-                },
-                {
-                    "id": "data",
-                    "alias": ["metric", "metrics"],
-                    "name": "Data",
-                    "sub": [
-                        {
-                            "id": "chart",
-                            "alias": ["graphs", "graphing", "charts"],
-                            "name": "Chart"
-                        }
-                    ]
-                },
-                {
-                    "id": "trade",
-                    "alias": ["invest", "investment", "buy", "sell", "exchange", "swap"],
-                    "name": "Trade",
-                    "sub": [
-                        {
-                            "id": "stock",
-                            "alias": ["stocks", "cryptostock", "cryptostocks"],
-                            "name": "Stocks"
-                        },
-                        {
-                            "id": "crypto/crypto",
-                            "alias": ["cryptos/cryptos"],
-                            "name": "Cryptos/Cryptos",
-                            "sub": [
-                                {
-                                    "id": "btc/alt",
-                                    "alias": ["cryptos/cryptos"],
-                                    "sub": [
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "fiat/crypto",
-                            "alias": ["fiat/cryptos"],
-                            "name": "Fiat/Cryptos"
-                        }
-                    ]
-                },
-                {
-                    "id": "software",
-                    "alias": ["program", "programs", "utility", "utilites", "tool", "tools"],
-                    "name": "Software",
-                    "sub": [
-                        {
-                            "id": "app",
-                            "alias": ["apps"],
-                            "name": "App",
-                            "sub": [
-                                {
-                                    "id": "android",
-                                    "alias": [],
-                                    "name": "Android"
-                                },
-                                {
-                                    "id": "blackberry",
-                                    "alias": "bb8",
-                                    "name": "BlackBerry"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "mining",
-                    "alias": "mine",
-                    "name": "Mining",
-                    "sub": [
-                        {
-                            "id": "pool",
-                            "alias": ["pools"],
-                            "name": "Pool"
-                        }
-                    ]
-                },
-                {
-                    "id": "discussion",
-                    "alias": ["discussions"],
-                    "name": "Discussion",
-                    "sub": [
-                        {
-                            "id": "chat",
-                            "alias": ["livechat"],
-                            "name": "Chat",
-                            "sub": [
-                                {
-                                    "id": "irc",
-                                    "alias": [],
-                                    "name": "IRC"
-                                },
-                                {
-                                    "id": "chatbox",
-                                    "alias": ["trollbox"],
-                                    "name": "ChatBox"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "forum",
-                            "alias": ["forums"],
-                            "name": "Forum",
-                            "sub": [
-                                {
-                                    "id": "thread",
-                                    "alias": ["threads"],
-                                    "name": "Thread"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "fiat",
-            "alias": ["currency"],
-            "name": "Currency",
-            "sub": [
-                {
-                    "id": "aud",
-                    "alias": ["aud"],
-                    "name": "[AUD] Australian Dollar"
-                },
-                {
-                    "id": "usd",
-                    "alias": ["usd"],
-                    "name": "[USD] U.S. Dollar"
-                }
-            ]
-        },
         {
             "id": "cryptos",
             "alias": ["crypto", "cryptocurrency", "cyptocurrencies"],
@@ -204,6 +51,157 @@
                             "name": ["[XRP] Ripple"]
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "id": "fiat",
+            "alias": ["currency"],
+            "name": "Fiat",
+            "sub": [
+                {
+                    "id": "aud",
+                    "alias": ["aud"],
+                    "name": "[AUD] Australian Dollar"
+                },
+                {
+                    "id": "usd",
+                    "alias": ["usd"],
+                    "name": "[USD] U.S. Dollar"
+                }
+            ]
+        },
+        {
+            "id": "goods",
+            "alias": ["good"],
+            "name": "Goods"
+        },
+        {
+            "id": "news",
+            "alias": ["article", "articles"],
+            "name": "News"
+        },
+        {
+            "id": "information",
+            "alias": ["info", "data", "metrics"],
+            "name": "Information",
+            "sub": [
+                {
+                    "id": "blockexplorers",
+                    "alias": ["explorer", "explorers", "blockexplorer", "blockchain", "blockchains"],
+                    "name": "Block Explorers"
+                },
+                {
+                    "id": "charts",
+                    "alias": ["graphs", "graphing", "charts"],
+                    "name": "Charts"
+                }
+            ]
+        },
+        {
+            "id": "services",
+            "alias": "service",
+            "name": "Services"
+        },
+        {
+            "id": "software",
+            "alias": ["program", "programs", "utility", "utilites", "tool", "tools"],
+            "name": "Software",
+            "sub": [
+                {
+                    "id": "app",
+                    "alias": ["apps"],
+                    "name": "App",
+                    "sub": [
+                        {
+                            "id": "android",
+                            "alias": [],
+                            "name": "Android"
+                        },
+                        {
+                            "id": "blackberry",
+                            "alias": "bb8",
+                            "name": "BlackBerry"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "mining",
+            "alias": "mine",
+            "name": "Mining",
+            "sub": [
+                {
+                    "id": "pool",
+                    "alias": ["pools"],
+                    "name": "Pool"
+                }
+            ]
+        },
+        {
+            "id": "discussion",
+            "alias": ["discussions"],
+            "name": "Discussion",
+            "sub": [
+                {
+                    "id": "chat",
+                    "alias": ["livechat"],
+                    "name": "Chat",
+                    "sub": [
+                        {
+                            "id": "irc",
+                            "alias": [],
+                            "name": "IRC"
+                        },
+                        {
+                            "id": "chatbox",
+                            "alias": ["trollbox"],
+                            "name": "ChatBox"
+                        }
+                    ]
+                },
+                {
+                    "id": "forum",
+                    "alias": ["forums"],
+                    "name": "Forum",
+                    "sub": [
+                        {
+                            "id": "thread",
+                            "alias": ["threads"],
+                            "name": "Thread"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "trade",
+            "alias": ["invest", "investment", "buy", "sell", "exchange", "swap"],
+            "name": "Trade",
+            "sub": [
+                {
+                    "id": "stock",
+                    "alias": ["stocks", "cryptostock", "cryptostocks"],
+                    "name": "Stocks"
+                },
+                {
+                    "id": "crypto/crypto",
+                    "alias": ["cryptos/cryptos"],
+                    "name": "Cryptos/Cryptos",
+                    "sub": [
+                        {
+                            "id": "btc/alt",
+                            "alias": ["cryptos/cryptos"],
+                            "sub": [
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "fiat/crypto",
+                    "alias": ["fiat/cryptos"],
+                    "name": "Fiat/Cryptos"
                 }
             ]
         }
