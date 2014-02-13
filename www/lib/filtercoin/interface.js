@@ -7,20 +7,26 @@
     var jebi = function(id) { return $("#" + id) };
 
     var INPUT_FILTERS = "input_filters";
+    var FILTER_LIST = "filter_list";
+
+    inter.FILTERABLE = {};
+    inter.NODE = {};
+    inter.ALIAS  = {};
+    inter.TEMPLATES = {};
 
     inter.fullUpdate = function() {
         //if (!this.loaded()) { return };
 
         var f      = readFilters(),
             p      = parseFilters(f),
-            fables = getFilterables(p);
+            fables = getNodes(p);
             data   = inter.DATA,
             res    = []
             fcount = 0;
         console.log("parsed", p)
         console.log("fables", fables)
         fables.forEach(function(fable) {
-            res = runFilter(data, fable.path, fcount)
+            res = runFilter(data, fable, fcount)
             data = res;
             fcount += 1
         });
@@ -31,7 +37,37 @@
         //renderResults(data);
     };
 
-    var runFilter = function(data, path, fcount) {
+    var runFilter = function(data, fable, fcount) {
+        console.log("dpf", data, fable, fcount)
+        fdata = []
+        data.forEach(function(d) {
+            console.log("d", d)
+            var tags = d.tags
+            for (var f = path.length - 1; p >= 0; p-- ) {
+                for (var t = 0; t < tags.length; t++ ) {
+                    if (tags[t] == path[p]) {
+                        if (fcount > 0) {
+                            d.match = d.match * ((p+1)/path.length)
+                        } else {
+                            d.match = ((p+1)/path.length)
+                        };
+                        fdata.push(d)
+                        return
+                    }
+                }
+            }
+        });
+        console.log(fdata)
+        return fdata;
+    };
+
+    var genFilterTree = function() {
+        fl = Handlebars.templates['filterlist'](inter.MODEL)
+        console.log(fl)
+        jebi( FILTER_LIST ).html( fl );
+    }
+
+    var __OLD__runFilterPath = function(data, path, fcount) {
         fdata = []
         data.forEach(function(d) {
             console.log("d", d)
@@ -99,26 +135,49 @@
     }
 
     var genPathsAndAliases = function(cb) {
-        inter.FILTERABLE = {};
-        inter.ALIAS  = {};
-
-        buildFilterable(inter.MODEL, []);
-        console.log(inter.FILTERABLE, inter.ALIAS)
+        buildNodesAndAliases(inter.MODEL);
+        console.log(inter.NODE, inter.ALIAS)
         cb(null);
     };
 
-    var getFilterables = function(aliases) {
-        var fables = []
+    var getNodes = function(aliases) {
+        // simplify to only have aliases?
+        var nodes = []
         aliases.forEach(function(alias) {
             var f = inter.ALIAS[alias];
             if (f) {
-                fables.push(inter.FILTERABLE[f]);
+                nodes.push(inter.NODE[f]);
             }
         });
-        return fables
+        return nodes
     };
 
-    var buildFilterable = function(node, path) {
+    var buildNodesAndAliases = function(node) {
+        // simplify to only have aliases?
+        inter.ALIAS[node.id] = node.id
+        for (var iA = 0; iA < node.alias.length; iA++) {
+            inter.ALIAS[node.alias[iA]] = node.id
+        }
+        inter.NODE[node.id] = node
+        if (node.sub) {
+            for (var iS = 0; iS < node.sub.length; iS++) {
+                buildNodesAndAliases(node.sub[iS])
+            }
+        };
+
+    };
+
+    var loadTemplates = function(node, path) {
+        // not needed :3
+        [
+            "filterlist",
+            "filterlistpartial"
+        ].forEach(function(tmpl) {
+            inter.TMPL[tmpl] = Handlebars.templates[tmpl + ".tmpl"]
+        });
+    };
+
+    var buildFilterableOld = function(node, path) {
         path.push(node.id)
         inter.ALIAS[node.id] = node.id
         for (var iA = 0; iA < node.alias.length; iA++) {
@@ -154,6 +213,7 @@
                 );
             },
             genPathsAndAliases,
+            genFilterTree,
             bindControls
         ]);
 

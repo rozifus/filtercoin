@@ -13,10 +13,14 @@
 
   <script src="./lib/async/async.js"></script>
 
+  <script src="./lib/handlebars/handlebars.runtime-v1.3.0.js"></script>
+  <script src="./templates/filterlist.handlebars.js"></script>
+  <script src="./partials/filteritem.handlebars.js"></script>
+
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.js"></script>
   <script src="./lib/semantic/packaged/javascript/semantic.js"></script>
-    
+
   <link rel="stylesheet" type="text/css" href="feed.css">
   <script src="./lib/filtercoin/interface.js"></script>
   <script src="./lib/filtercoin/init.js"></script>
@@ -92,15 +96,17 @@
 
   <!-- Filter -->
   <div class="ui segment">
-    <div class="ui green piled segment">
+    <div class="ui green piled segment form">
       <h2 class="ui dividing header">
         Filter
       </h2>
       <div class="ui field">
         <div class="ui fluid input">
-          <input id="input_filters" type="text" placeholder="eg. USD/BTC">
+          <input id="input_filters" type="text" placeholder="eg. USD/BTC" />
           </input>
         </div>
+      </div>
+      <div id="filter_list" class="ui field">
       </div>
     </div>
 

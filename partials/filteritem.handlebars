@@ -1,0 +1,14 @@
+<div class="title">
+  <i class="dropdown icon"></i>
+  {{ name }}
+</div>
+<div class="content">
+  {{# if sub }}
+  <div class="accordion">
+    {{# each sub }}
+      {{> filteritem }}
+    {{/ each }}
+  </div>
+  {{/ if }}
+</div>
+

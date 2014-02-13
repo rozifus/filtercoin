@@ -13,6 +13,10 @@ $(document)
       .modal()
     ;
 
+    $('.ui.accordion')
+      .accordion()
+    ;
+
 
     /*
     $('.ui.rating')

@@ -44,11 +44,24 @@
                             "id": "stock",
                             "alias": ["stocks", "cryptostock", "cryptostocks"],
                             "name": "Stocks"
-                        }
+                        },
                         {
                             "id": "crypto/crypto",
                             "alias": ["cryptos/cryptos"],
-                            "name": "Cryptos/Cryptos"
+                            "name": "Cryptos/Cryptos",
+                            "sub": [
+                                {
+                                    "id": "btc/alt",
+                                    "alias": ["cryptos/cryptos"],
+                                    "sub": [
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "fiat/crypto",
+                            "alias": ["fiat/cryptos"],
+                            "name": "Fiat/Cryptos"
                         }
                     ]
                 },
@@ -193,6 +206,6 @@
                     ]
                 }
             ]
-        },
+        }
     ]
 }
