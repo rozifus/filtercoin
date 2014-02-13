@@ -1,14 +1,26 @@
-<div class="title">
-  <i class="dropdown icon"></i>
-  {{ name }}
-</div>
-<div class="content">
-  {{# if sub }}
-  <div class="ui accordion">
-    {{# each sub }}
-      {{> filteritem }}
-    {{/ each }}
+{{# if sub }}
+  <div class="ui title subs">
+    <!--
+    <div class="ui button blue tiny circular">
+      Add
+    </div>
+    -->
+    <i class="add-filter blue square add icon"></i>
+    &nbsp;
+    {{ name }}
+    <i class="dropdown icon"></i>
   </div>
-  {{/ if }}
-</div>
+  <div class="content">
+    <div class="ui accordion">
+      {{# each sub }}
+        {{> filteritem }}
+      {{/ each }}
+    </div>
+  </div>
+{{ else }}
+  <div class="title">
+    <i class="blue square add icon"></i>
+    &nbsp;{{ name }}
+  </div>
+{{/ if }}
 

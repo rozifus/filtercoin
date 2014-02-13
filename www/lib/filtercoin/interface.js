@@ -61,9 +61,10 @@
         return fdata;
     };
 
-    var genFilterTree = function() {
+    var genFilterTree = function(cb) {
         var fl = Handlebars.templates['filterlist'](inter.MODEL)
         jebi( FILTER_LIST ).html( fl );
+        cb(null);
     }
 
     var __OLD__runFilterPath = function(data, path, fcount) {
@@ -200,7 +201,40 @@
         jebi( INPUT_FILTERS ).on("input", inter.fullUpdate);
 
         cb(null);
+    };
+
+    var addFilter = function() {
+
     }
+
+    var initSemanticModules = function(cb) {
+
+        $('.filter.menu .item')
+          .tab()
+        ;
+
+        $('.ui.sidebar')
+          .sidebar('attach events', '.launch.button')
+        ;
+
+        $('.ui.accordion').first()
+          .accordion({
+            'selector': {
+              title: '.title.subs'
+            }
+          })
+        ;
+
+        $('.add-filter').click(function(event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
+            console.log(event)
+            addFilter()
+        })
+
+        cb(null);
+    };
 
     inter.init = function() {
 
@@ -213,6 +247,7 @@
             },
             genPathsAndAliases,
             genFilterTree,
+            initSemanticModules,
             bindControls
         ]);
 
