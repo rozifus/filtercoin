@@ -9,11 +9,7 @@ $(document)
       .sidebar('attach events', '.launch.button')
     ;
 
-    $('.ui.filter-modal')
-      .modal()
-    ;
-
-    $('.ui.accordion')
+    $('.ui.accordion').first()
       .accordion()
     ;
 

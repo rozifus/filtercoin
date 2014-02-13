@@ -62,8 +62,7 @@
     };
 
     var genFilterTree = function() {
-        fl = Handlebars.templates['filterlist'](inter.MODEL)
-        console.log(fl)
+        var fl = Handlebars.templates['filterlist'](inter.MODEL)
         jebi( FILTER_LIST ).html( fl );
     }
 

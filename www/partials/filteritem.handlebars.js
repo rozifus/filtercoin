@@ -8,7 +8,7 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n  <div class=\"accordion\">\n    ";
+  buffer += "\n  <div class=\"ui accordion\">\n    ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.sub), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </div>\n  ";

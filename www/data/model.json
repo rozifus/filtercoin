@@ -1,7 +1,7 @@
 {
-    "id": "all",
-    "alias": ["everything"],
-    "name": "Everything",
+    "id": "filters",
+    "alias": ["filter", "all", "everything"],
+    "name": "Filters",
     "sub": [
         {
             "id": "type",
@@ -157,8 +157,8 @@
             ]
         },
         {
-            "id": "crypto",
-            "alias": ["crypto", "cryptos", "cryptocurrency", "cyptocurrencies"],
+            "id": "cryptos",
+            "alias": ["crypto", "cryptocurrency", "cyptocurrencies"],
             "name": "Cryptos",
             "sub": [
                 {
@@ -167,7 +167,7 @@
                     "name": "[BTC] Bitcoin"
                 },
                 {
-                    "id": "alt",
+                    "id": "altcoins",
                     "alias": ["alt", "alts", "altcoin", "altcoins"],
                     "name": "Altcoins",
                     "sub": [
