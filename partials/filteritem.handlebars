@@ -1,16 +1,11 @@
 {{# if sub }}
   <div class="ui title subs">
-    <!--
-    <div class="ui button blue tiny circular">
-      Add
-    </div>
-    -->
-    <div class="add-filter ui button tiny blue icon">
-      <i class="add-filter add medium icon"></i>
+    <div data-filter-id="{{ id }}" class="add-filter ui circular button tiny icon">
+      <i class="add icon"></i>
     </div>
     &nbsp;
     {{ name }}
-    <i class="dropdown icon"></i>
+    <i class="dropdown icon red"></i>
   </div>
   <div class="content">
     <div class="ui accordion">
@@ -21,8 +16,8 @@
   </div>
 {{ else }}
   <div class="title">
-    <div class="add-filter ui button tiny blue icon">
-      <i class="add-filter add icon"></i>
+    <div data-filter-id="{{ id }}" class="add-filter ui circular button tiny icon">
+      <i class="add icon"></i>
     </div>
     <!--<i class="blue square add icon"></i>-->
     &nbsp;{{ name }}

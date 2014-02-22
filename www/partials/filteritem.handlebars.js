@@ -8,11 +8,15 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n  <div class=\"ui title subs\">\n    <!--\n    <div class=\"ui button blue tiny circular\">\n      Add\n    </div>\n    -->\n    <div class=\"add-filter ui button tiny blue icon\">\n      <i class=\"add-filter add medium icon\"></i>\n    </div>\n    &nbsp;\n    ";
+  buffer += "\n  <div class=\"ui title subs\">\n    <div data-filter-id=\"";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"add-filter ui circular button tiny icon\">\n      <i class=\"add icon\"></i>\n    </div>\n    &nbsp;\n    ";
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\n    <i class=\"dropdown icon\"></i>\n  </div>\n  <div class=\"content\">\n    <div class=\"ui accordion\">\n      ";
+    + "\n    <i class=\"dropdown icon red\"></i>\n  </div>\n  <div class=\"content\">\n    <div class=\"ui accordion\">\n      ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.sub), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </div>\n  </div>\n";
@@ -31,7 +35,11 @@ function program2(depth0,data) {
 function program4(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n  <div class=\"title\">\n    <div class=\"add-filter ui button tiny blue icon\">\n      <i class=\"add-filter add icon\"></i>\n    </div>\n    <!--<i class=\"blue square add icon\"></i>-->\n    &nbsp;";
+  buffer += "\n  <div class=\"title\">\n    <div data-filter-id=\"";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"add-filter ui circular button tiny icon\">\n      <i class=\"add icon\"></i>\n    </div>\n    <!--<i class=\"blue square add icon\"></i>-->\n    &nbsp;";
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)

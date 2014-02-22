@@ -15,7 +15,9 @@
 
   <script src="./lib/handlebars/handlebars.runtime-v1.3.0.js"></script>
   <script src="./templates/filterlist.handlebars.js"></script>
+  <script src="./templates/resultlist.handlebars.js"></script>
   <script src="./partials/filteritem.handlebars.js"></script>
+  <script src="./partials/resultitem.handlebars.js"></script>
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.js"></script>
@@ -96,7 +98,7 @@
 
   <!-- Filter -->
   <div class="ui segment">
-    <div class="ui green piled segment form">
+    <div class="ui red piled segment form">
       <h2 class="ui dividing header">
         Filter
       </h2>
@@ -131,23 +133,25 @@
       <h2 class="ui dividing header">
       Results
       </h2>
-      <div id="item_list" class="ui divided list">
-        <div class="item">
-          <div class="content">
-            <a class="header" href="http://www.coinchoose.com">coinchoose.com</a>
-            <div class="description">Crypto Currency Mining Profitability Bitcoin / Litecoin</div>
+      <div id="result_list" class="ui fluid">
+        <div class="ui divided list fluid">
+          <div class="item">
+            <div class="content">
+              <a class="header" href="http://www.coinchoose.com">coinchoose.com</a>
+              <div class="description">Crypto Currency Mining Profitability Bitcoin / Litecoin</div>
+            </div>
           </div>
-        </div>
-        <div class="item">
-          <div class="content">
-            <a class="header" href="http://www.cryptsy.com">cryptsy.com</a>
-            <div class="description">A poodle, it's pretty basic</div>
+          <div class="item">
+            <div class="content">
+              <a class="header" href="http://www.cryptsy.com">cryptsy.com</a>
+              <div class="description">A poodle, it's pretty basic</div>
+            </div>
           </div>
-        </div>
-        <div class="item">
-          <div class="content">
-            <div class="header">Paulo</div>
-            He's also a dog
+          <div class="item">
+            <div class="content">
+              <div class="header">Paulo</div>
+              He's also a dog
+            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@
 
     var INPUT_FILTERS = "input_filters";
     var FILTER_LIST = "filter_list";
+    var RESULT_LIST = "result_list";
 
     inter.FILTERABLE = {};
     inter.NODE = {};
@@ -34,7 +35,7 @@
             resetMatches(data);
         };
         console.log(data)
-        //renderResults(data);
+        displayResults(data)
     };
 
     var runFilter = function(data, fable, fcount) {
@@ -43,17 +44,10 @@
         data.forEach(function(d) {
             console.log("d", d)
             var tags = d.tags
-            for (var f = path.length - 1; p >= 0; p-- ) {
-                for (var t = 0; t < tags.length; t++ ) {
-                    if (tags[t] == path[p]) {
-                        if (fcount > 0) {
-                            d.match = d.match * ((p+1)/path.length)
-                        } else {
-                            d.match = ((p+1)/path.length)
-                        };
-                        fdata.push(d)
-                        return
-                    }
+            for (var t = 0; t < tags.length; t++ ) {
+                if (tags[t] == fable.id) {
+                    fdata.push(d)
+                    return
                 }
             }
         });
@@ -62,9 +56,14 @@
     };
 
     var genFilterTree = function(cb) {
-        var fl = Handlebars.templates['filterlist'](inter.MODEL)
+        var fl = Handlebars.templates['filterlist'](inter.MODEL);
         jebi( FILTER_LIST ).html( fl );
         cb(null);
+    }
+
+    var displayResults = function(results) {
+        var rl = Handlebars.templates['resultlist'](results);
+        jebi( RESULT_LIST ).html( rl );
     }
 
     var __OLD__runFilterPath = function(data, path, fcount) {
@@ -200,12 +199,32 @@
 
         jebi( INPUT_FILTERS ).on("input", inter.fullUpdate);
 
+        $('div.add-filter').click(function(event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
+            if (event && event.currentTarget) {
+                addFilter($(event.currentTarget).attr('data-filter-id'));
+            } else {
+                console.log(":S!!! No event.currentTarget");
+            }
+        })
+
         cb(null);
     };
 
-    var addFilter = function() {
+    var addFilter = function(fid) {
 
-    }
+        var infil = jebi( INPUT_FILTERS ),
+            cur   = infil.val().trim();
+
+        if (cur != "") {
+            infil.val(infil.val() + " ");
+        }
+
+        infil.val(infil.val() + fid);
+
+    };
 
     var initSemanticModules = function(cb) {
 
@@ -224,14 +243,6 @@
             }
           })
         ;
-
-        $('.add-filter').click(function(event) {
-            if (event.stopPropagation) {
-                event.stopPropagation();
-            }
-            console.log(event)
-            addFilter()
-        })
 
         cb(null);
     };
