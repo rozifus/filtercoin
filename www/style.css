@@ -52,23 +52,31 @@ body {
 
 .result-link {
     text-decoration: none;
+    line-height: 30px;
 }
 
 .result-link {
     color: #2a47b0;
+    color: #1E36ED;
 }
 
 .result-link:visited {
     color: #2a5db0;
+    color: #2a5db0;
 }
-
 .result-link img {
+    vertical-align: middle;
     width: 16px;
     height: 16px;
     padding: 0px;
     border: 1px solid #ccdddd;
     border-radius: 3px;
 }
+
+.result-link span {
+    vertical-align: middle;
+}
+
 
 
 /*-------------------
