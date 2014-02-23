@@ -61,7 +61,7 @@
         cb(null);
     }
 
-    var displayResults = function(results) {
+    var displayResults = function(results, conf) {
         var rl = Handlebars.templates['resultlist'](results);
         jebi( RESULT_LIST ).html( rl );
     }
@@ -205,6 +205,7 @@
             }
             if (event && event.currentTarget) {
                 addFilter($(event.currentTarget).attr('data-filter-id'));
+                inter.fullUpdate()
             } else {
                 console.log(":S!!! No event.currentTarget");
             }

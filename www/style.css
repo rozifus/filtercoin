@@ -46,6 +46,29 @@ body {
     margin-top: 1em;
 }
 
+/*-------------------
+        Results
+--------------------*/
+
+.result-link {
+    text-decoration: none;
+}
+
+.result-link {
+    color: #2a47b0;
+}
+
+.result-link:visited {
+    color: #2a5db0;
+}
+
+.result-link img {
+    width: 16px;
+    height: 16px;
+    padding: 0px;
+    border: 1px solid #ccdddd;
+    border-radius: 3px;
+}
 
 
 /*-------------------
