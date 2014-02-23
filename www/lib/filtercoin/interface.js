@@ -205,7 +205,12 @@
             }
             if (event && event.currentTarget) {
                 addFilter($(event.currentTarget).attr('data-filter-id'));
+
+                $('.ui.accordion').first().accordion('close', 0);
+                jebi( INPUT_FILTERS ).focus()
+
                 inter.fullUpdate()
+
             } else {
                 console.log(":S!!! No event.currentTarget");
             }

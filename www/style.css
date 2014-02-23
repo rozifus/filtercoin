@@ -68,12 +68,12 @@ body {
     vertical-align: middle;
     width: 16px;
     height: 16px;
-    padding: 0px;
-    border: 1px solid #ccdddd;
-    border-radius: 3px;
+    padding: 0.5em;
+    border-right: 1px solid #ddeeee;
 }
 
 .result-link span {
+    padding-left: 0.2em;
     vertical-align: middle;
 }
 
