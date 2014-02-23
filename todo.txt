@@ -1,0 +1,7 @@
+
+
+===TODO===
+
+*All item tags in model
+*btc/ltc implies btc + ltc, etc.
+*downward matching with %
