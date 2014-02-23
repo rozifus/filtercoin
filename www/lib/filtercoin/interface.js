@@ -6,9 +6,10 @@
     var gebi = function(id) { return document.getElementById(id); };
     var jebi = function(id) { return $("#" + id) };
 
-    var INPUT_FILTERS = "input_filters";
-    var FILTER_LIST = "filter_list";
-    var RESULT_LIST = "result_list";
+    var FILTER_LIST     = "filter_list",
+        INPUT_FILTERS   = "input_filters",
+        FILTER_DETECTED = "filter_detected",
+        RESULT_LIST     = "result_list";
 
     inter.FILTERABLE = {};
     inter.NODE = {};
@@ -31,6 +32,7 @@
             data = res;
             fcount += 1
         });
+        console.log('fcount', fcount);
         if (fcount == 0) {
             resetMatches(data);
         };
@@ -64,6 +66,11 @@
     var displayResults = function(results, conf) {
         var rl = Handlebars.templates['resultlist'](results);
         jebi( RESULT_LIST ).html( rl );
+    }
+
+    var displayFilterDetected = function(filters) {
+        var fd = Handlebars.templates['filterdetected'](filters)
+        jebi( FILTER_DETECTED ).html( fd );
     }
 
     var __OLD__runFilterPath = function(data, path, fcount) {
