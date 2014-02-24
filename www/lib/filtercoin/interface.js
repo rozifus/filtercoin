@@ -214,7 +214,8 @@
             if (event && event.currentTarget) {
                 addFilter($(event.currentTarget).attr('data-filter-id'));
 
-                $('.ui.accordion').first().accordion('close', 0);
+                //$('.ui.accordion').first().accordion('close', 0);
+                $('.ui.sidebar').sidebar('hide');
                 jebi( INPUT_FILTERS ).focus()
 
                 inter.fullUpdate()
@@ -247,7 +248,7 @@
         ;
 
         $('.ui.sidebar')
-          .sidebar('attach events', '.launch.button')
+          .sidebar('attach events', '#button_addfilter')
         ;
 
         $('.ui.accordion').first()
