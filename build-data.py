@@ -1,5 +1,6 @@
 import os,sys
 import json
+from pop import getPop
 
 def getFiles(input_dir):
     result = []
@@ -18,6 +19,10 @@ def writeJsonToFile(obj, file_loc):
         json.dump(obj, f)
 
 
+def addPops(items):
+    for item in items:
+        p = getPop(item["href"])
+        print p
 
 if __name__ == "__main__":
 
@@ -32,6 +37,7 @@ if __name__ == "__main__":
         if "item" in item:
             item = item["item"]
         items.append(item)
+    addPops(items)
     writeJsonToFile(items, OUTPUT_DIR + os.sep + OUTPUT_NAME)
 
 
