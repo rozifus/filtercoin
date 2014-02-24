@@ -7,6 +7,7 @@
     var jebi = function(id) { return $("#" + id) };
 
     var FILTER_LIST     = "filter_list",
+        FILTER_MENU     = "filter_menu",
         INPUT_FILTERS   = "input_filters",
         FILTER_DETECTED = "filter_detected",
         RESULT_LIST     = "result_list";
@@ -59,7 +60,7 @@
 
     var genFilterTree = function(cb) {
         var fl = Handlebars.templates['filterlist'](inter.MODEL);
-        jebi( FILTER_LIST ).html( fl );
+        jebi( FILTER_MENU ).html( fl );
         cb(null);
     }
 
