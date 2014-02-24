@@ -21,8 +21,7 @@ def writeJsonToFile(obj, file_loc):
 
 def addPops(items):
     for item in items:
-        p = getPop(item["href"])
-        print p
+        item["pop"] = getPop(item["href"])
 
 if __name__ == "__main__":
 
