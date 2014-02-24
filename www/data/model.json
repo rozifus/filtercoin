@@ -100,7 +100,7 @@
         },
         {
             "id": "services",
-            "alias": "service",
+            "alias": ["service"],
             "name": "Services"
         },
         {
@@ -120,7 +120,7 @@
                         },
                         {
                             "id": "blackberry",
-                            "alias": "bb8",
+                            "alias": ["bb8"],
                             "name": "BlackBerry"
                         }
                     ]
@@ -129,7 +129,7 @@
         },
         {
             "id": "mining",
-            "alias": "mine",
+            "alias": ["mine"],
             "name": "Mining",
             "sub": [
                 {
