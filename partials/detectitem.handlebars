@@ -1,0 +1,12 @@
+{{# if step }}
+    <i class="ui icon right arrow"></i>
+{{/ if }}
+<div class="ui label">
+  {{ name }}
+  {{# unless unknown }}
+  <div class="detail">
+    {{ count }}
+  </div>
+  {{/ unless }}
+</div>
+

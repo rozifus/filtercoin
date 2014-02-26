@@ -4,13 +4,18 @@
     "name": "Everything",
     "sub": [
         {
+            "id": "charity",
+            "alias": ["giving", "helping"],
+            "name": "Charity"
+        },
+        {
             "id": "cryptos",
             "alias": ["crypto", "cryptocurrency", "cyptocurrencies"],
             "name": "Cryptos",
             "sub": [
                 {
                     "id": "btc",
-                    "alias": ["btc, bitcoin"],
+                    "alias": ["bitcoin"],
                     "name": "[BTC] Bitcoin"
                 },
                 {
@@ -170,6 +175,42 @@
                             "id": "thread",
                             "alias": ["threads"],
                             "name": "Thread"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "services",
+            "alias": ["service"],
+            "name": "Services",
+            "sub": [
+                {
+                    "id": "gambling",
+                    "alias": ["betting", "bet", "gamble"],
+                    "name": "Gambling"
+                }
+            ]
+        },
+        {
+            "id": "technical",
+            "alias": [],
+            "name": "Technical",
+            "sub": [
+                {
+                    "id": "algorithms",
+                    "alias": ["algo", "algorithm"],
+                    "name": "Algorithms",
+                    "sub": [
+                        {
+                            "id": "sha-256",
+                            "alias": ["sha", "sha256"],
+                            "name": "SHA-256"
+                        },
+                        {
+                            "id": "scrypt",
+                            "alias": [],
+                            "name": "Scrypt"
                         }
                     ]
                 }

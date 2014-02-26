@@ -9,7 +9,7 @@
     var FILTER_LIST     = "filter_list",
         FILTER_MENU     = "filter_menu",
         INPUT_FILTERS   = "input_filters",
-        FILTER_DETECTED = "filter_detected",
+        DETECTED_LIST   = "filter_detected",
         RESULT_LIST     = "result_list";
 
     inter.FILTERABLE = {};
@@ -22,30 +22,49 @@
 
         var f      = readFilters(),
             p      = parseFilters(f),
-            fables = getNodes(p);
+            fables = getNodes(p),
             data   = inter.DATA,
-            res    = []
+            res    = [],
+            det    = [],
             fcount = 0;
-        console.log("parsed", p)
-        console.log("fables", fables)
+        //console.log("parsed", p)
+        //console.log("fables", fables)
         fables.forEach(function(fable) {
-            res = runFilter(data, fable, fcount)
-            data = res;
-            fcount += 1
+            if (fable != null) {
+                res = runFilter(data, fable, fcount)
+                data = res;
+                det.push({ name: fable.name,
+                           count: data.length,
+                           step: det.length
+                });
+                fcount += 1;
+            } else {
+                det.push({ name: "???",
+                           unknown: true,
+                           step: det.length
+                });
+            }
         });
-        console.log('fcount', fcount);
+        //console.log('fcount', fcount);
         if (fcount == 0) {
             resetMatches(data);
-        };
-        console.log(data)
-        displayResults(data)
+            displayResults([]);
+        } else {
+            displayResults(data);
+        }
+        displayDetected(det);
+    };
+
+    var displayDetected = function(det) {
+        var dl = Handlebars.templates['detectlist'](det);
+        jebi( DETECTED_LIST).html( dl );
     };
 
     var runFilter = function(data, fable, fcount) {
-        console.log("dpf", data, fable, fcount)
+        //console.log("dpf", data, fable, fcount)
         fdata = []
         data.forEach(function(d) {
-            console.log("d", d)
+            //console.log("d", d)
             var tags = d.tags
             for (var t = 0; t < tags.length; t++ ) {
                 if (tags[t] == fable.id) {
@@ -54,7 +73,7 @@
                 }
             }
         });
-        console.log(fdata)
+        //console.log(fdata)
         return fdata;
     };
 
@@ -77,7 +96,7 @@
     var __OLD__runFilterPath = function(data, path, fcount) {
         fdata = []
         data.forEach(function(d) {
-            console.log("d", d)
+            //console.log("d", d)
             var tags = d.tags
             for (var p = path.length - 1; p >= 0; p-- ) {
                 for (var t = 0; t < tags.length; t++ ) {
@@ -93,7 +112,7 @@
                 }
             }
         });
-        console.log(data)
+        //console.log(data)
         return fdata;
     };
 
@@ -104,7 +123,7 @@
     };
 
     var renderResults = function(results) {
-        console.log(results.length, results)
+        //console.log(results.length, results)
     };
 
 
@@ -119,7 +138,7 @@
     }
 
     var parseFilters = function(filters) {
-        console.log(filters)
+        //console.log(filters)
         return filters
     }
 
@@ -154,7 +173,9 @@
             var f = inter.ALIAS[alias];
             if (f) {
                 nodes.push(inter.NODE[f]);
-            }
+            } else {
+                nodes.push(null);
+            };
         });
         return nodes
     };
