@@ -24,18 +24,23 @@
                     "name": "Altcoins",
                     "sub": [
                         {
+                            "id": "auc",
+                            "alias": ["auroracoin"],
+                            "name": "[AUC] Auroracoin"
+                        },
+                        {
                             "id": "doge",
-                            "alias": ["doge", "dogecoin"],
+                            "alias": ["dogecoin"],
                             "name": "[DOGE] Dogecoin"
                         },
                         {
                             "id": "ltc",
-                            "alias": ["ltc", "litecoin"],
+                            "alias": ["litecoin"],
                             "name": "[LTC] Litecoin"
                         },
                         {
                             "id": "zet",
-                            "alias": ["zet", "zetacoin"],
+                            "alias": ["zetacoin"],
                             "name": "[ZET] Zetacoin"
                         }
                     ]
@@ -61,7 +66,7 @@
         },
         {
             "id": "fiat",
-            "alias": ["currency"],
+            "alias": ["currency", "currencies"],
             "name": "Fiat",
             "sub": [
                 {
