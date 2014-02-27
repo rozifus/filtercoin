@@ -105,13 +105,13 @@
                     "id": "charts",
                     "alias": ["graphs", "graphing", "charts"],
                     "name": "Charts"
+                },
+                {
+                    "id": "price",
+                    "alias": ["value", "cost", "ticker", "worth"],
+                    "name": "Price"
                 }
             ]
-        },
-        {
-            "id": "services",
-            "alias": ["service"],
-            "name": "Services"
         },
         {
             "id": "software",
@@ -120,7 +120,7 @@
             "sub": [
                 {
                     "id": "app",
-                    "alias": ["apps"],
+                    "alias": ["apps", "mobile"],
                     "name": "App",
                     "sub": [
                         {
@@ -132,6 +132,11 @@
                             "id": "blackberry",
                             "alias": ["bb8"],
                             "name": "BlackBerry"
+                        },
+                        {
+                            "id": "ios",
+                            "alias": ["iphone", "ipad"],
+                            "name": "iOS"
                         }
                     ]
                 }
@@ -192,7 +197,7 @@
             "sub": [
                 {
                     "id": "gambling",
-                    "alias": ["betting", "bet", "gamble"],
+                    "alias": ["betting", "bet", "gamble", "dice"],
                     "name": "Gambling"
                 }
             ]
@@ -250,6 +255,11 @@
                     "name": "Fiat/Cryptos"
                 }
             ]
+        },
+        {
+            "id": "wallet",
+            "alias": [],
+            "name": "Wallet"
         }
     ]
 }
