@@ -177,14 +177,19 @@
                     ]
                 },
                 {
-                    "id": "forum",
-                    "alias": ["forums"],
-                    "name": "Forum",
+                    "id": "forums",
+                    "alias": ["forum", "thread", "threads"],
+                    "name": "Forums",
                     "sub": [
                         {
-                            "id": "thread",
-                            "alias": ["threads"],
-                            "name": "Thread"
+                            "id": "reddit",
+                            "alias": [],
+                            "name": "Reddit"
+                        },
+                        {
+                            "id": "bitcointalk",
+                            "alias": [],
+                            "name": "BitcoinTalk"
                         }
                     ]
                 }
