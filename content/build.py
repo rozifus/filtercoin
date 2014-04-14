@@ -1,7 +1,6 @@
 import os,sys
 import modules.readwrite as rw
-import modules.pop
-import modules.compress
+import modules.pop, modules.compress, modules.auto
 import config
 
 def getFiles(input_dir):
@@ -22,6 +21,7 @@ if __name__ == "__main__":
     print(len(items))
 
     #modules.pop.process(items)
+    modules.auto.process(items)
     modules.compress.process(items)
     rw.jsonToFile(items, config.SITES_OUTPUT)
 

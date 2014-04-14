@@ -1,5 +1,6 @@
 {
     "name": "Cryptsy",
+    "auto": "exchange.cryptsy",
     "href": "https://www.cryptsy.com/users/register?refid=14455",
     "tags": [ "btc", "alt", "trade" ]
 }
