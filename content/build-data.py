@@ -1,6 +1,7 @@
 import os,sys
 import json
 from pop import getPop
+import config
 
 def getFiles(input_dir):
     result = []
@@ -25,18 +26,15 @@ def addPops(items):
 
 if __name__ == "__main__":
 
-    INPUT_DIR = "./data"
-    OUTPUT_DIR = "./www/data"
-    OUTPUT_NAME = "data.json"
-
-    files = getFiles(INPUT_DIR)
+    files = getFiles(config.INPUT_DIR)
     items = []
     for f_loc in files:
         item = getJsonFromFile(f_loc)
         if "item" in item:
             item = item["item"]
         items.append(item)
+    print(len(items))
     addPops(items)
-    writeJsonToFile(items, OUTPUT_DIR + os.sep + OUTPUT_NAME)
+    writeJsonToFile(items, config.OUTPUT_DIR + os.sep + config.OUTPUT_NAME)
 
 
