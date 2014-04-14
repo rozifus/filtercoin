@@ -1,0 +1,270 @@
+{
+    "id": "everything",
+    "alias": ["all", "everything"],
+    "name": "Everything",
+    "sub": [
+        {
+            "id": "charity",
+            "alias": ["giving", "helping"],
+            "name": "Charity"
+        },
+        {
+            "id": "cryptos",
+            "alias": ["crypto", "cryptocurrency", "cyptocurrencies"],
+            "name": "Cryptos",
+            "sub": [
+                {
+                    "id": "btc",
+                    "alias": ["bitcoin"],
+                    "name": "[BTC] Bitcoin"
+                },
+                {
+                    "id": "altcoins",
+                    "alias": ["alt", "alts", "altcoin", "altcoins"],
+                    "name": "Altcoins",
+                    "sub": [
+                        {
+                            "id": "auc",
+                            "alias": ["auroracoin"],
+                            "name": "[AUC] Auroracoin"
+                        },
+                        {
+                            "id": "doge",
+                            "alias": ["dogecoin"],
+                            "name": "[DOGE] Dogecoin"
+                        },
+                        {
+                            "id": "ltc",
+                            "alias": ["litecoin"],
+                            "name": "[LTC] Litecoin"
+                        },
+                        {
+                            "id": "zet",
+                            "alias": ["zetacoin"],
+                            "name": "[ZET] Zetacoin"
+                        }
+                    ]
+                },
+                {
+                    "id": "nextgen",
+                    "alias": ["nextgen", "secondgen", "2.0", "crypto2.0"],
+                    "name": "SecondGen",
+                    "sub": [
+                        {
+                            "id": "nxt",
+                            "alias": ["nxtcoin"],
+                            "name": "[NXT] Nxt"
+                        },
+                        {
+                            "id": "xrp",
+                            "alias": ["ripple", "ripplecoin"],
+                            "name": ["[XRP] Ripple"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fiat",
+            "alias": ["currency", "currencies"],
+            "name": "Fiat",
+            "sub": [
+                {
+                    "id": "aud",
+                    "alias": ["aud"],
+                    "name": "[AUD] Australian Dollar"
+                },
+                {
+                    "id": "usd",
+                    "alias": ["usd"],
+                    "name": "[USD] U.S. Dollar"
+                }
+            ]
+        },
+        {
+            "id": "goods",
+            "alias": ["good"],
+            "name": "Goods"
+        },
+        {
+            "id": "news",
+            "alias": ["article", "articles"],
+            "name": "News"
+        },
+        {
+            "id": "information",
+            "alias": ["info", "data", "metrics"],
+            "name": "Information",
+            "sub": [
+                {
+                    "id": "blockexplorers",
+                    "alias": ["explorer", "explorers", "blockexplorer", "blockchain", "blockchains"],
+                    "name": "Block Explorers"
+                },
+                {
+                    "id": "charts",
+                    "alias": ["graphs", "graphing", "charts"],
+                    "name": "Charts"
+                },
+                {
+                    "id": "price",
+                    "alias": ["value", "cost", "ticker", "worth"],
+                    "name": "Price"
+                }
+            ]
+        },
+        {
+            "id": "software",
+            "alias": ["program", "programs", "utility", "utilites", "tool", "tools"],
+            "name": "Software",
+            "sub": [
+                {
+                    "id": "app",
+                    "alias": ["apps", "mobile"],
+                    "name": "App",
+                    "sub": [
+                        {
+                            "id": "android",
+                            "alias": [],
+                            "name": "Android"
+                        },
+                        {
+                            "id": "blackberry",
+                            "alias": ["bb8"],
+                            "name": "BlackBerry"
+                        },
+                        {
+                            "id": "ios",
+                            "alias": ["iphone", "ipad"],
+                            "name": "iOS"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "mining",
+            "alias": ["mine"],
+            "name": "Mining",
+            "sub": [
+                {
+                    "id": "pool",
+                    "alias": ["pools"],
+                    "name": "Pool"
+                }
+            ]
+        },
+        {
+            "id": "discussion",
+            "alias": ["discussions"],
+            "name": "Discussion",
+            "sub": [
+                {
+                    "id": "chat",
+                    "alias": ["livechat"],
+                    "name": "Chat",
+                    "sub": [
+                        {
+                            "id": "irc",
+                            "alias": [],
+                            "name": "IRC"
+                        },
+                        {
+                            "id": "chatbox",
+                            "alias": ["trollbox"],
+                            "name": "ChatBox"
+                        }
+                    ]
+                },
+                {
+                    "id": "forums",
+                    "alias": ["forum", "thread", "threads"],
+                    "name": "Forums",
+                    "sub": [
+                        {
+                            "id": "reddit",
+                            "alias": [],
+                            "name": "Reddit"
+                        },
+                        {
+                            "id": "bitcointalk",
+                            "alias": [],
+                            "name": "BitcoinTalk"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "services",
+            "alias": ["service"],
+            "name": "Services",
+            "sub": [
+                {
+                    "id": "gambling",
+                    "alias": ["betting", "bet", "gamble", "dice"],
+                    "name": "Gambling"
+                }
+            ]
+        },
+        {
+            "id": "technical",
+            "alias": [],
+            "name": "Technical",
+            "sub": [
+                {
+                    "id": "algorithms",
+                    "alias": ["algo", "algorithm"],
+                    "name": "Algorithms",
+                    "sub": [
+                        {
+                            "id": "sha-256",
+                            "alias": ["sha", "sha256"],
+                            "name": "SHA-256"
+                        },
+                        {
+                            "id": "scrypt",
+                            "alias": [],
+                            "name": "Scrypt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "trade",
+            "alias": ["invest", "investment", "buy", "sell", "exchange", "swap"],
+            "name": "Trade",
+            "sub": [
+                {
+                    "id": "stock",
+                    "alias": ["stocks", "cryptostock", "cryptostocks"],
+                    "name": "Stocks"
+                },
+                {
+                    "id": "crypto/crypto",
+                    "alias": ["cryptos/cryptos"],
+                    "name": "Cryptos/Cryptos",
+                    "sub": [
+                        {
+                            "id": "btc/alt",
+                            "alias": ["cryptos/cryptos"],
+                            "sub": [
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "fiat/crypto",
+                    "alias": ["fiat/cryptos"],
+                    "name": "Fiat/Cryptos"
+                }
+            ]
+        },
+        {
+            "id": "wallet",
+            "alias": [],
+            "name": "Wallet"
+        }
+    ]
+}

@@ -4,6 +4,7 @@ from __future__ import print_function
 import sys, os
 from lxml.html import etree, parse
 import urllib
+import modules.readwrite as rw
 
 POP_SITE_BASE = "http://www.trafficestimate.com"
 TAR_S = "has received an estimated"
@@ -34,6 +35,10 @@ def getPop(url):
         print("No matches:" + url)
         return 0
     return int(text_dump[s+len(TAR_S):e].replace(',',''))
+
+def process(data):
+    for d in data:
+        d["pop"] = getPop(d["href"])
 
 if __name__ == '__main__':
     if sys.argv > 1:
