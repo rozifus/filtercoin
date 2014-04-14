@@ -12,7 +12,7 @@ def getFiles(input_dir):
 
 if __name__ == "__main__":
 
-    files = getFiles(config.INPUT_DIR)
+    files = getFiles(config.SITES_INPUT_DIR)
     items = []
     for f_loc in files:
         item = rw.jsonFromFile(f_loc)
@@ -23,6 +23,10 @@ if __name__ == "__main__":
 
     #modules.pop.process(items)
     modules.compress.process(items)
-    rw.jsonToFile(items, config.OUTPUT_DIR + os.sep + config.OUTPUT_NAME)
+    rw.jsonToFile(items, config.SITES_OUTPUT)
+
+    model = rw.jsonFromFile(config.MODEL_INPUT)
+    modules.compress.process(model)
+    rw.jsonToFile(model, config.MODEL_OUTPUT)
 
 

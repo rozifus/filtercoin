@@ -1,6 +1,8 @@
 
-INPUT_DIR = "./raw/sites"
-OUTPUT_DIR = "../www/data"
-OUTPUT_NAME = "data.json"
+SITES_INPUT_DIR = "./raw/sites"
+SITES_OUTPUT = "../www/data/data.json"
+
+MODEL_INPUT = "./raw/model/model.json"
+MODEL_OUTPUT = "../www/data/model.json"
 
 
