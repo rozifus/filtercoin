@@ -33,7 +33,7 @@
             if (fable != null) {
                 res = runFilter(data, fable, fcount)
                 data = res;
-                det.push({ name: fable.name,
+                det.push({ name: fable.n,
                            count: data.length,
                            step: det.length
                 });
@@ -65,9 +65,9 @@
         fdata = []
         data.forEach(function(d) {
             //console.log("d", d)
-            var tags = d.tags
+            var tags = d.t
             for (var t = 0; t < tags.length; t++ ) {
-                if (tags[t] == fable.id) {
+                if (tags[t] == fable.i) {
                     fdata.push(d)
                     return
                 }
@@ -97,7 +97,7 @@
         fdata = []
         data.forEach(function(d) {
             //console.log("d", d)
-            var tags = d.tags
+            var tags = d.t
             for (var p = path.length - 1; p >= 0; p-- ) {
                 for (var t = 0; t < tags.length; t++ ) {
                     if (tags[t] == path[p]) {
@@ -182,14 +182,14 @@
 
     var buildNodesAndAliases = function(node) {
         // simplify to only have aliases?
-        inter.ALIAS[node.id] = node.id
-        for (var iA = 0; iA < node.alias.length; iA++) {
-            inter.ALIAS[node.alias[iA]] = node.id
+        inter.ALIAS[node.i] = node.i
+        for (var iA = 0; iA < node.a.length; iA++) {
+            inter.ALIAS[node.a[iA]] = node.i
         }
-        inter.NODE[node.id] = node
-        if (node.sub) {
-            for (var iS = 0; iS < node.sub.length; iS++) {
-                buildNodesAndAliases(node.sub[iS])
+        inter.NODE[node.i] = node
+        if (node.s) {
+            for (var iS = 0; iS < node.s.length; iS++) {
+                buildNodesAndAliases(node.s[iS])
             }
         };
 
@@ -206,19 +206,19 @@
     };
 
     var buildFilterableOld = function(node, path) {
-        path.push(node.id)
-        inter.ALIAS[node.id] = node.id
-        for (var iA = 0; iA < node.alias.length; iA++) {
-            inter.ALIAS[node.alias[iA]] = node.id
+        path.push(node.i)
+        inter.ALIAS[node.i] = node.i
+        for (var iA = 0; iA < node.a.length; iA++) {
+            inter.ALIAS[node.a[iA]] = node.i
         }
         filterable = {
-            name: node.name,
+            name: node.n,
             path: path
         }
-        inter.FILTERABLE[node.id] = filterable
-        if (node.sub) {
-            for (var iS = 0; iS < node.sub.length; iS++) {
-                buildFilterable(node.sub[iS], path.slice() )
+        inter.FILTERABLE[node.i] = filterable
+        if (node.s) {
+            for (var iS = 0; iS < node.s.length; iS++) {
+                buildFilterable(node.s[iS], path.slice() )
             }
         };
 

@@ -9,12 +9,12 @@ function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n  <div class=\"ui title subs\">\n    <div data-filter-id=\"";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if (helper = helpers.i) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.i); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\" class=\"add-filter ui circular button tiny icon\">\n      <i class=\"add icon\"></i>\n    </div>\n    &nbsp;\n    ";
-  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if (helper = helpers.n) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.n); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\n    <i class=\"dropdown icon red\"></i>\n  </div>\n  <div class=\"content\">\n    <div class=\"ui accordion\">\n      ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.sub), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
@@ -40,8 +40,8 @@ function program4(depth0,data) {
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\" class=\"add-filter ui circular button tiny icon\">\n      <i class=\"add icon\"></i>\n    </div>\n    <!--<i class=\"blue square add icon\"></i>-->\n    &nbsp;";
-  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if (helper = helpers.n) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.n); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\n  </div>\n";
   return buffer;
