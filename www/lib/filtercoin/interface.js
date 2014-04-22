@@ -45,6 +45,7 @@
                 });
             }
         });
+        data.sort(sortPop);
         //console.log('fcount', fcount);
         if (fcount == 0) {
             resetMatches(data);
@@ -54,6 +55,16 @@
         }
         displayDetected(det);
     };
+
+    var sortPop = function(a,b) {
+        if (typeof(b.p) == "undefined") {
+            return -1
+        } else if (typeof(a.p) == "undefined") {
+            return 1
+        } else {
+            return b.p - a.p
+        }
+    }
 
     var displayDetected = function(det) {
         var dl = Handlebars.templates['detectlist'](det);

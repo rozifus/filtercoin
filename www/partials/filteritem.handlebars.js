@@ -36,8 +36,8 @@ function program4(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n  <div class=\"title\">\n    <div data-filter-id=\"";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if (helper = helpers.i) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.i); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\" class=\"add-filter ui circular button tiny icon\">\n      <i class=\"add icon\"></i>\n    </div>\n    <!--<i class=\"blue square add icon\"></i>-->\n    &nbsp;";
   if (helper = helpers.n) { stack1 = helper.call(depth0, {hash:{},data:data}); }
