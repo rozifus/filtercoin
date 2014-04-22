@@ -22,6 +22,7 @@ if __name__ == "__main__":
 
     #modules.pop.process(items)
     modules.auto.process(items)
+    modules.pop.process(items)
     modules.compress.process(items)
     rw.jsonToFile(items, config.SITES_OUTPUT)
 

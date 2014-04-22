@@ -11,6 +11,7 @@ EXP = {
 
     "i": "id",
     "a": "alias",
+    "p": "pop",
     "s": "sub",
 }
 COMP = {}
