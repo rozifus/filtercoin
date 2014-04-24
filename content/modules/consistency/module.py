@@ -9,7 +9,6 @@ def unique_dict_add(val, d):
     else: d[val] = True
 
 def collect_node_tags(node, found):
-    print("node")
     ident = node["id"]
     unique_dict_add(ident, found)
     if "sub" in node:

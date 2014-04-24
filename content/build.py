@@ -1,6 +1,6 @@
 import os,sys
 import modules.readwrite as rw
-import modules.consistency
+import modules.consistency, modules.pairs
 import modules.pop, modules.compress, modules.autogen
 import config
 
@@ -16,7 +16,6 @@ if __name__ == "__main__":
     model = rw.jsonFromFile(config.MODEL_INPUT)
     order = rw.jsonFromFile(config.ORDER_INPUT)
 
-
     items = []
     for f_loc in files:
         item = rw.jsonFromFile(f_loc)
@@ -26,6 +25,7 @@ if __name__ == "__main__":
     print(len(items))
 
     modules.autogen.process(items)
+    modules.pairs.process(items)
     modules.consistency.process(model, items, order)
     #modules.pop.process(items)
     modules.compress.process(items)
