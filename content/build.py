@@ -1,5 +1,6 @@
 import os,sys
 import modules.readwrite as rw
+import modules.consistency
 import modules.pop, modules.compress, modules.autogen
 import config
 
@@ -12,6 +13,10 @@ def getFiles(input_dir):
 if __name__ == "__main__":
 
     files = getFiles(config.SITES_INPUT_DIR)
+    model = rw.jsonFromFile(config.MODEL_INPUT)
+    order = rw.jsonFromFile(config.ORDER_INPUT)
+
+
     items = []
     for f_loc in files:
         item = rw.jsonFromFile(f_loc)
@@ -20,13 +25,12 @@ if __name__ == "__main__":
         items.append(item)
     print(len(items))
 
-    #modules.pop.process(items)
     modules.autogen.process(items)
-    modules.pop.process(items)
+    modules.consistency.process(model, items, order)
+    #modules.pop.process(items)
     modules.compress.process(items)
     rw.jsonToFile(items, config.SITES_OUTPUT)
 
-    model = rw.jsonFromFile(config.MODEL_INPUT)
     modules.compress.process(model)
     rw.jsonToFile(model, config.MODEL_OUTPUT)
 

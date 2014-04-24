@@ -1,0 +1,14 @@
+{
+    "fiat": [
+        "usd",
+        "rur",
+        "cnh",
+        "aud"
+    ],
+    "crypto": [
+        "btc",
+        "ltc",
+        "doge",
+        "xpm"
+    ]
+}
