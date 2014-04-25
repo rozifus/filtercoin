@@ -27,7 +27,7 @@ if __name__ == "__main__":
     modules.autogen.process(items)
     modules.pairs.process(items)
     modules.consistency.process(model, items, order)
-    #modules.pop.process(items)
+    modules.pop.process(items)
     modules.compress.process(items)
     rw.jsonToFile(items, config.SITES_OUTPUT)
 

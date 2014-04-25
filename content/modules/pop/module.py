@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 import sys, os
+import random
 from lxml.html import etree, parse
 import urllib
 import modules.readwrite as rw
@@ -39,6 +40,9 @@ def getPop(url):
 def process(data):
     for d in data:
         d["pop"] = getPop(d["href"])
+        if d["pop"] == 0:
+            d["pop"] = round(random.random(), 3)
+        print(d["pop"])
 
 if __name__ == '__main__':
     if sys.argv > 1:
