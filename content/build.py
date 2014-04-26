@@ -22,7 +22,7 @@ if __name__ == "__main__":
         if "item" in item:
             item = item["item"]
         items.append(item)
-    print(len(items))
+    print("Items", len(items))
 
     modules.autogen.process(items)
     modules.pairs.process(items)

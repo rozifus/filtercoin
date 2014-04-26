@@ -10,7 +10,7 @@ def process(sites):
             path = "modules.autogen." + site["auto"]
             gen = None
             gen = __import__(path, fromlist=["autogen"])
-            gen.autogen()
+            gen.autogen(site)
             del site["auto"]
 
 
