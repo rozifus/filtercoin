@@ -57,13 +57,10 @@
     };
 
     var sortPop = function(a,b) {
-        if (typeof(b.p) == "undefined") {
-            return -1
-        } else if (typeof(a.p) == "undefined") {
-            return 1
-        } else {
-            return b.p - a.p
+        if (b.m != a.m) {
+            return b.m - a.m
         }
+        return b.p - a.p
     }
 
     var displayDetected = function(det) {
