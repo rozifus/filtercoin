@@ -8,7 +8,7 @@ import sys, os
 
 TARGET = "http://www.cryptsy.com"
 
-def autogen():
+def autogen(site):
     data = defaultdict(list)
 
     raw = urllib.urlopen(TARGET)
@@ -20,6 +20,9 @@ def autogen():
     matches = [m.split("/") for m in matches]
     for m in matches:
         data[m[1]].append(m[0])
+
+    new_tags = {}
+
     return data
 
 
