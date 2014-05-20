@@ -7,4 +7,6 @@ MODEL_OUTPUT        =   "../www/data/model.json"
 
 ORDER_INPUT         =   "./raw/model/order.json"
 
-VERBOSE             =   True
+VERBOSE             =   [
+    "cccgen"
+]

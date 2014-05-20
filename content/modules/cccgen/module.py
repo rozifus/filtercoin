@@ -20,7 +20,7 @@ def getExchanges(data):
     matches += doc.cssselect("#tableMarkets tbody tr td a")
     matches = [EX_BASE + m.get("href") for m in matches]
 
-    if data.config.VERBOSE:
+    if "cccgen" in data.config.VERBOSE or "all" in data.config.VERBOSE:
         print("___CCCGEN:GET_EXCHANGES___")
         for m in matches:
             print(m)
