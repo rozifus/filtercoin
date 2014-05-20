@@ -2,35 +2,43 @@ import os,sys
 import modules.readwrite as rw
 import modules.consistency, modules.pairs
 import modules.pop, modules.compress, modules.autogen
+import modules.cccgen
 import config
 
-def getFiles(input_dir):
-    result = []
-    for path,folders,files in os.walk(input_dir):
-        result.extend([path+os.sep+f for f in files])
-    return result
+def getSites(site_dir):
+    f_list = []
+    for path,folders,files in os.walk(site_dir):
+        f_list.extend([path+os.sep+f for f in files])
+
+    sites = []
+    for f_loc in f_list:
+        sites.append(rw.jsonFromFile(f_loc))
+
+    return sites
 
 if __name__ == "__main__":
 
-    files = getFiles(config.SITES_INPUT_DIR)
-    model = rw.jsonFromFile(config.MODEL_INPUT)
-    order = rw.jsonFromFile(config.ORDER_INPUT)
+    class Data(object):
+        pass
+    data = Data()
 
-    items = []
-    for f_loc in files:
-        item = rw.jsonFromFile(f_loc)
-        if "item" in item:
-            item = item["item"]
-        items.append(item)
-    print("Items", len(items))
+    print(config.SITES_INPUT_DIR)
 
-    modules.autogen.process(items)
-    modules.pairs.process(items)
-    modules.consistency.process(model, items, order)
-    modules.pop.process(items)
-    modules.compress.process(items)
-    rw.jsonToFile(items, config.SITES_OUTPUT)
+    data.config = config
+    data.sites = getSites(config.SITES_INPUT_DIR)
+    data.model = rw.jsonFromFile(config.MODEL_INPUT)
+    data.order = rw.jsonFromFile(config.ORDER_INPUT)
 
+    #sites
+    modules.cccgen.process(data)
+    #modules.autogen.process(data)
+    modules.pairs.process(data)
+    modules.consistency.process(data)
+    modules.pop.process(data)
+    modules.compress.process(data)
+    rw.jsonToFile(data, config.SITES_OUTPUT)
+
+    #model
     modules.compress.process(model)
     rw.jsonToFile(model, config.MODEL_OUTPUT)
 
