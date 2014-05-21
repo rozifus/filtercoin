@@ -1,14 +1,23 @@
 {
     "fiat": [
         "usd",
-        "rur",
         "cnh",
+        "cny",
+        "rmb",
+        "rur",
         "aud"
     ],
     "crypto": [
         "btc",
         "ltc",
         "doge",
-        "xpm"
+        "ppc",
+        "nmc",
+        "xpm",
+        "xrp",
+        "nxt",
+        "msc",
+        "drk",
+        "bc"
     ]
 }
