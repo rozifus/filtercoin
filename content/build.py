@@ -22,8 +22,6 @@ if __name__ == "__main__":
         pass
     data = Data()
 
-    print(config.SITES_INPUT_DIR)
-
     data.config = config
     data.sites = getSites(config.SITES_INPUT_DIR)
     data.model = rw.jsonFromFile(config.MODEL_INPUT)

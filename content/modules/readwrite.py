@@ -2,7 +2,7 @@ import json
 
 def jsonFromFile(file_loc):
     with open(file_loc) as f:
-        print(f)
+        #print(f)
         return json.load(f)
     return None
 
