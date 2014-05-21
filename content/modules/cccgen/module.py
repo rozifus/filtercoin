@@ -25,7 +25,7 @@ def getExchanges(data):
 
         return ex_pairs
 
-    print("__GET_EXCHANGES__")
+    print(":GET_EXCHANGES")
 
     raw = urllib.urlopen(EX_LIST)
     doc = parse(raw).getroot()
@@ -36,14 +36,16 @@ def getExchanges(data):
 
     ex_data = {}
     for m in matches:
-        ex_data[m.split("/")[-1]] = getExchangePairs(m)
-        print('.', end='')
-        sys.stdout.flush()
-
-    if "cccgen" in data.config.VERBOSE or "all" in data.config.VERBOSE:
-        for e,p in ex_data.iteritems():
+        e = m.split("/")[-1]
+        p = getExchangePairs(m)
+        ex_data[e] = p
+        if "cccgen" in data.config.VERBOSE or "all" in data.config.VERBOSE:
+            print()
             print(e)
             print(p)
+        else:
+            print('.', end='')
+            sys.stdout.flush()
 
     print()
 
@@ -52,7 +54,9 @@ def getExchanges(data):
 
 def process(data):
 
-    print("::__CCCGEN_MODULE__::")
+    print("-----------------")
+    print("| CCCGEN_MODULE |")
+    print("-----------------")
 
     exs = getExchanges(data)
     e_keys = exs.keys()
@@ -71,15 +75,6 @@ def process(data):
     for e in e_keys:
         print("WARNING: unused exchange key", e)
 
-    """
-    for site in sites:
-        if "cccg" in site:
-            path = "modules.cccgen." + site["cccg"]
-            sub_module = None
-            sub_module = __import__(path, fromlist=["gen"])
-            sub_module.gen(site)
-            del site["cccg"]
-    """
 
 
 

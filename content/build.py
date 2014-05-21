@@ -2,7 +2,7 @@ import os,sys
 import modules.readwrite as rw
 import modules.consistency, modules.pairs
 import modules.pop, modules.compress, modules.autogen
-import modules.cccgen
+import modules.cccgen, modules.normalize
 import config
 
 def getSites(site_dir):
@@ -27,17 +27,25 @@ if __name__ == "__main__":
     data.model = rw.jsonFromFile(config.MODEL_INPUT)
     data.order = rw.jsonFromFile(config.ORDER_INPUT)
 
-    #sites
+    # run modules
     modules.cccgen.process(data)
     #modules.autogen.process(data)
+    modules.normalize.process(data)
     modules.pairs.process(data)
     modules.consistency.process(data)
     modules.pop.process(data)
     modules.compress.process(data)
-    rw.jsonToFile(data, config.SITES_OUTPUT)
 
-    #model
-    modules.compress.process(model)
-    rw.jsonToFile(model, config.MODEL_OUTPUT)
+    # write sites
+    print("--------------")
+    print("| WRITE_DATA |")
+    print("--------------")
+    print(":WRITE_SITES")
+    rw.jsonToFile(data.sites, config.SITES_OUTPUT)
+
+    # write model
+    print(":WRITE_MODEL")
+    rw.jsonToFile(data.model, config.MODEL_OUTPUT)
+
 
 

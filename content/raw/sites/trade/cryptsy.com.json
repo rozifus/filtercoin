@@ -1,6 +1,6 @@
 {
     "name": "Cryptsy",
-    "cgen": "cryptsy",
+    "cccg": "cryptsy",
     "href": "https://www.cryptsy.com/users/register?refid=14455",
     "tags": [ "btc", "alt", "trade" ]
 }

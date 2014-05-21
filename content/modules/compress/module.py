@@ -24,12 +24,18 @@ def compress(root):
             compress(item)
     elif type(root) == type({}):
         for k,v in root.items():
+            rcopy = root.copy()
             compress(v)
             del root[k]
-            root[COMP[k]] = v
+            if k not in COMP.keys():
+                print("WARNING: unknown uncompressed key", k, "in:")
+                print(rcopy)
+            else:
+                root[COMP[k]] = v
 
 def process(data):
-    compress(data)
+    compress(data.sites)
+    compress(data.model)
 
 
 
