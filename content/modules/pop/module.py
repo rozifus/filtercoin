@@ -38,7 +38,7 @@ def getPop(url):
     return int(text_dump[s+len(TAR_S):e].replace(',',''))
 
 def process(data):
-    for d in data:
+    for d in data.sites:
         pop = getPop(d["href"])
         print(pop)
         if pop == 0:

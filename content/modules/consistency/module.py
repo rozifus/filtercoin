@@ -35,13 +35,13 @@ def collect_order_tags(order, found):
         unique_dict_add(tag, found)
 
 
-def process(inModel, inItems, inOrder):
+def process(data):
     dModel = {}
     dItems = {}
     dOrder = {}
 
-    collect_model_tags(inModel, dModel)
-    collect_item_tags(inItems, dItems)
-    collect_order_tags(inOrder, dOrder)
+    collect_model_tags(data.model, dModel)
+    collect_item_tags(data.sites, dItems)
+    collect_order_tags(data.order, dOrder)
 
 
