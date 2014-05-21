@@ -11,9 +11,6 @@ EX_BASE = "http://www.cryptocoincharts.info"
 EX_LIST = EX_BASE + "/v2/markets/info"
 EX_SHOW = EX_BASE + "v2/markets/show/"
 
-def normalizePairs(pair_list):
-    pair_list = [p.lower for p in pair_list]
-
 def getExchanges(data):
 
     def getExchangePairs(info_page):
@@ -23,11 +20,8 @@ def getExchanges(data):
         matches = doc.cssselect("table tbody tr td a")
         ex_pairs = [m.text_content() for m in matches[1:]]
 
-        if len(ex_pairs) == 0:
-            print("WARNING: No trading pairs for",
-                  info_page.split("/")[-1])
-        elif ex_pairs[0] == "Show logged in users..":
-                ex_pairs = ex_pairs[1:]
+        if ex_pairs and ex_pairs[0] == "Show logged in users..":
+            ex_pairs = ex_pairs[1:]
 
         return ex_pairs
 
@@ -43,12 +37,15 @@ def getExchanges(data):
     ex_data = {}
     for m in matches:
         ex_data[m.split("/")[-1]] = getExchangePairs(m)
+        print('.', end='')
+        sys.stdout.flush()
 
     if "cccgen" in data.config.VERBOSE or "all" in data.config.VERBOSE:
         for e,p in ex_data.iteritems():
             print(e)
             print(p)
-        print("--------------------------")
+
+    print()
 
     return ex_data
 
@@ -60,15 +57,19 @@ def process(data):
     exs = getExchanges(data)
     e_keys = exs.keys()
     for site in data.sites:
-        if "cccgen" in site:
-            s_key = site['cccgen']
+        if "cgen" in site:
+            s_key = site['cgen']
             if s_key in e_keys:
                 e_keys.remove(s_key)
-                site['tags'].extend(exs[s_key])
+                new_keys = exs[s_key]
+                if len(new_keys) > 0:
+                    site['tags'].extend(new_keys)
+                else:
+                    print("WARNING: no trading pairs for", s_key)
             else:
-                print("WARNING: site key not found in exchange keys")
+                print("WARNING: unmatched site key", s_key)
     for e in e_keys:
-        print("WARNING: Unused exchange key", e)
+        print("WARNING: unused exchange key", e)
 
     """
     for site in sites:
