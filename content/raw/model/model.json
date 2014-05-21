@@ -248,7 +248,8 @@
                     "sub": [
                         {
                             "id": "btc/alt",
-                            "alias": ["cryptos/cryptos"],
+                            "alias": ["btc/cryptos"],
+                            "name":"BTC/Crypto"
                             "sub": [
                             ]
                         }

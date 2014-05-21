@@ -18,7 +18,10 @@ def dominantLast(a,b,dom):
     if a not in dom.keys():
         if b not in dom.keys():
             print("WARNING: no order for both halves of pair", a, b)
-            return a,b
+            if a < b:
+                return b,a
+            else:
+                return a,b
         else:
             print("WARNING: no order for half pair", a)
             return a,b
@@ -33,6 +36,7 @@ def dominantLast(a,b,dom):
 
 def process(data):
     dom = getDominance(data)
+    pairs = {}
     for site in data.sites:
         tags = site['tags']
         for ti in range(len(tags)):
