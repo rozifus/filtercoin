@@ -23,7 +23,6 @@ def stripUrl(url):
 def getPop(url):
     surl = stripUrl(url)
     surl = POP_SITE_BASE + '/' + surl
-    print(surl)
     raw = urllib.urlopen(surl)
     doc = parse(raw).getroot()
     matches = doc.find_class('chart-yoy') + \
@@ -33,20 +32,40 @@ def getPop(url):
                         matches), "")
     s,e = text_dump.find(TAR_S), text_dump.find(TAR_E)
     if s == -1 or e == -1:
-        print("No matches:" + url)
         return 0
     return int(text_dump[s+len(TAR_S):e].replace(',',''))
 
 def process(data):
+
+    print()
+    print("--------------")
+    print("| POP_MODULE |")
+    print("--------------")
+
+    print()
+    print(":FETCH_SITE_POP")
+
+    zero, non_zero = 0.0,0.0
     for d in data.sites:
-        pop = getPop(d["href"])
-        print(pop)
+        href = d["href"]
+        pop = getPop(href)
         if pop == 0:
+            zero += 1
             pop = random.random()
         else:
+            non_zero += 1
             pop = math.log10(pop)
-        d["pop"] = round(pop, 2)
-        print(d["pop"])
+        pop = round(pop, 2)
+        d["pop"] = pop
+        if "all" in data.config.VERBOSE or "pop" in data.config.VERBOSE:
+            print()
+            print(href)
+            print(pop)
+
+    if zero > non_zero:
+        print()
+        print("WARNING: more than half sites returned zero pop")
+
 
 if __name__ == '__main__':
     if sys.argv > 1:

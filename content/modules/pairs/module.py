@@ -3,7 +3,15 @@
 from __future__ import print_function
 import sys, os
 
+
+def buildModelPairs(data, pairs):
+    for pair in pairs.keys():
+        pass
+
 def getDominance(data):
+
+    print(":GET_PAIR_DOMINANCE")
+
     dom = {}
     d = 1
     for c in reversed(data.order['crypto']):
@@ -35,6 +43,13 @@ def dominantLast(a,b,dom):
             return b,a
 
 def process(data):
+
+    print("----------------")
+    print("| PAIRS_MODULE |")
+    print("----------------")
+
+    print(":NORMALIZE_PAIR_DOMINANCE")
+
     dom = getDominance(data)
     pairs = {}
     for site in data.sites:
@@ -43,7 +58,12 @@ def process(data):
             if "/" in tags[ti]:
                 a,b = tags[ti].split("/")
                 new_tag = "/".join(dominantLast(a,b,dom))
+                pairs[new_tag] = True
                 tags[ti] = new_tag
+
+    print(":BUILD_MODEL_PAIRS")
+
+    buildModelPairs(data, pairs)
 
 
 

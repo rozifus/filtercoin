@@ -244,21 +244,21 @@
                 {
                     "id": "crypto/crypto",
                     "alias": ["cryptos/cryptos"],
-                    "name": "Cryptos/Cryptos",
+                    "name": "Crypto/Crypto",
                     "sub": [
                         {
                             "id": "btc/alt",
                             "alias": ["btc/cryptos"],
-                            "name":"BTC/Crypto"
+                            "name":"Crypto/BTC",
                             "sub": [
                             ]
                         }
                     ]
                 },
                 {
-                    "id": "fiat/crypto",
-                    "alias": ["fiat/cryptos"],
-                    "name": "Fiat/Cryptos"
+                    "id": "crypto/fiat",
+                    "alias": ["cryptos/fiat"],
+                    "name": "Crypto/Fiat"
                 }
             ]
         },
