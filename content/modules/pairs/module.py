@@ -11,7 +11,8 @@ def buildModelPairs(data):
     for pair in data.model_pairs.keys():
         slave, master = pair.split("/")
         if master in data.order['fiat']:
-            if model_pair_tree()
+            if model_pair_tree():
+                pass
 
 
 def getDominance(data):

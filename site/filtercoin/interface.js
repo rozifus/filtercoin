@@ -170,7 +170,8 @@
 
     var genPathsAndAliases = function(cb) {
         buildNodesAndAliases(inter.MODEL);
-        console.log(inter.NODE, inter.ALIAS)
+        console.log("nodes", inter.NODE);
+        console.log("aliases", inter.ALIAS);
         cb(null);
     };
 
