@@ -1,3 +1,4 @@
 #!/bin/bash
 
-uglifyjs ./js/filtercoin/interface.js -o ./www/lib/filtercoin/interface.js -m sort
+./ext_tools/UglifyJS/bin/uglifyjs ./site/filtercoin/interface.js > ./www/lib/filtercoin/interface.js
+
