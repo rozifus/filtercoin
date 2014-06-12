@@ -4,9 +4,15 @@ from __future__ import print_function
 import sys, os
 
 
-def buildModelPairs(data, pairs):
-    for pair in pairs.keys():
-        pass
+def buildModelPairs(data):
+
+    model_pair_tree = {"crypto/fiat": {}, "crypto/crypto": {}}
+
+    for pair in data.model_pairs.keys():
+        slave, master = pair.split("/")
+        if master in data.order['fiat']:
+            if model_pair_tree()
+
 
 def getDominance(data):
 
@@ -63,7 +69,8 @@ def process(data):
 
     print(":BUILD_MODEL_PAIRS")
 
-    buildModelPairs(data, pairs)
+    data.model_pairs = pairs
+    buildModelPairs(data)
 
 
 
