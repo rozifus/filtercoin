@@ -5,11 +5,14 @@ import sys, os
 import urllib
 from lxml.html import parse
 import modules.readwrite as rw
+from modules.status import Status
 
 
 EX_BASE = "http://www.cryptocoincharts.info"
 EX_LIST = EX_BASE + "/v2/markets/info"
 EX_SHOW = EX_BASE + "v2/markets/show/"
+
+status = Status("cccgen")
 
 def getExchanges(data):
 
@@ -25,7 +28,7 @@ def getExchanges(data):
 
         return ex_pairs
 
-    print(":GET_EXCHANGES")
+    status.begin_action("GET_EXCHANGES")
 
     raw = urllib.urlopen(EX_LIST)
     doc = parse(raw).getroot()
@@ -39,24 +42,17 @@ def getExchanges(data):
         e = m.split("/")[-1]
         p = getExchangePairs(m)
         ex_data[e] = p
-        if "cccgen" in data.config.VERBOSE or "all" in data.config.VERBOSE:
-            print()
-            print(e)
-            print(p)
-        else:
-            print('.', end='')
-            sys.stdout.flush()
+        status.inc("",e,p)
 
-    print()
+    status.end_inc()
 
     return ex_data
 
 
 def process(data):
 
-    print("-----------------")
-    print("| CCCGEN_MODULE |")
-    print("-----------------")
+    status.connect_data(data)
+    status.begin_module()
 
     exs = getExchanges(data)
     e_keys = exs.keys()
@@ -69,11 +65,11 @@ def process(data):
                 if len(new_keys) > 0:
                     site['tags'].extend(new_keys)
                 else:
-                    print("WARNING: no trading pairs for", s_key)
+                    status.warn("no trading pairs for", s_key)
             else:
-                print("WARNING: unmatched site key", s_key)
+                status.warn("unmatched site key", s_key)
     for e in e_keys:
-        print("WARNING: unused exchange key", e)
+        status.warn("unused exchange key", e)
 
 
 
