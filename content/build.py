@@ -3,6 +3,7 @@ import modules.readwrite as rw
 import modules.consistency, modules.pairs
 import modules.pop, modules.compress, modules.autogen
 import modules.cccgen, modules.normalize
+from modules.status import Status
 import config
 
 def getSites(site_dir):
@@ -18,6 +19,8 @@ def getSites(site_dir):
 
 if __name__ == "__main__":
 
+    status = Status()
+
     class Data(object):
         pass
     data = Data()
@@ -27,6 +30,23 @@ if __name__ == "__main__":
     data.model = rw.jsonFromFile(config.MODEL_INPUT)
     data.order = rw.jsonFromFile(config.ORDER_INPUT)
 
+    active_modules = [
+        "cccgen",
+        #"autogen",
+        "normalize",
+        "pairs",
+        "consistency",
+        "pop",
+        "compress"
+    ]
+
+    for am in active_modules:
+        status.begin_module(am)
+        module_path = "modules." + am
+        module = __import__(module_path, fromlist=["process"])
+        module.process(data)
+
+    """
     # run modules
     modules.cccgen.process(data)
     #modules.autogen.process(data)
@@ -35,6 +55,7 @@ if __name__ == "__main__":
     modules.consistency.process(data)
     modules.pop.process(data)
     modules.compress.process(data)
+    """
 
     print("--------------")
     print("| WRITE_DATA |")

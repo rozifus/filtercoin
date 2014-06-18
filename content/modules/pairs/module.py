@@ -2,7 +2,9 @@
 
 from __future__ import print_function
 import sys, os
+from modules.status import Status
 
+status = Status("pairs")
 
 def buildModelPairs(data):
 
@@ -17,7 +19,7 @@ def buildModelPairs(data):
 
 def getDominance(data):
 
-    print(":GET_PAIR_DOMINANCE")
+    status.begin_action("GET_PAIR_DOMINANCE")
 
     dom = {}
     d = 1
@@ -32,16 +34,16 @@ def getDominance(data):
 def dominantLast(a,b,dom):
     if a not in dom.keys():
         if b not in dom.keys():
-            print("WARNING: no order for both halves of pair", a, b)
+            status.warn("no order for both halves of pair", a, b)
             if a < b:
                 return b,a
             else:
                 return a,b
         else:
-            print("WARNING: no order for half pair", a)
+            status.warn("no order for half pair", a)
             return a,b
     elif b not in dom.keys():
-        print("WARNING: no order for half pair", b)
+        status.warn("no order for half pair", b)
         return b,a
     else:
         if dom[b] > dom[a]:
@@ -51,11 +53,8 @@ def dominantLast(a,b,dom):
 
 def process(data):
 
-    print("----------------")
-    print("| PAIRS_MODULE |")
-    print("----------------")
-
-    print(":NORMALIZE_PAIR_DOMINANCE")
+    status.connect_data(data)
+    status.begin_action("NORMALIZE_PAIR_DOMINANCE")
 
     dom = getDominance(data)
     pairs = {}
@@ -68,7 +67,7 @@ def process(data):
                 pairs[new_tag] = True
                 tags[ti] = new_tag
 
-    print(":BUILD_MODEL_PAIRS")
+    status.begin_action("BUILD_MODEL_PAIRS")
 
     data.model_pairs = pairs
     buildModelPairs(data)

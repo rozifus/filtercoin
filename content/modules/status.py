@@ -18,6 +18,7 @@ class Status:
         print("-" * 2 + "-" * len(name) + "-" * 9)
         print("| " + name.upper() + "_MODULE |")
         print("-" * 2 + "-" * len(name) + "-" * 9)
+    module = begin_module
 
     def warning(self, *args):
         print("WARNING: ", *args)
@@ -28,6 +29,7 @@ class Status:
         if action[0] != ":":
             action = ":" + action
         print(action)
+    action = begin_action
 
     def inc(self, *inc):
         if self.mod_id in self.data.config.VERBOSE or "all" in self.data.config.VERBOSE:

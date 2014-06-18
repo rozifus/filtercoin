@@ -52,7 +52,6 @@ def getExchanges(data):
 def process(data):
 
     status.connect_data(data)
-    status.begin_module()
 
     exs = getExchanges(data)
     e_keys = exs.keys()

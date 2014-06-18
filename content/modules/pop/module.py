@@ -6,10 +6,13 @@ import math, random
 from lxml.html import etree, parse
 import urllib
 import modules.readwrite as rw
+from modules.status import Status
 
 POP_SITE_BASE = "http://www.trafficestimate.com"
 TAR_S = "has received an estimated"
 TAR_E = "visits over the last"
+
+status = Status("pop")
 
 def stripUrl(url):
     pro = url.find("://")
@@ -37,13 +40,9 @@ def getPop(url):
 
 def process(data):
 
-    print()
-    print("--------------")
-    print("| POP_MODULE |")
-    print("--------------")
+    status.connect_data(data)
 
-    print()
-    print(":FETCH_SITE_POP")
+    status.begin_action("FETCH_SITE_POP")
 
     zero, non_zero = 0.0,0.0
     for d in data.sites:
@@ -57,14 +56,11 @@ def process(data):
             pop = math.log10(pop)
         pop = round(pop, 2)
         d["pop"] = pop
-        if "all" in data.config.VERBOSE or "pop" in data.config.VERBOSE:
-            print()
-            print(href)
-            print(pop)
+        status.inc([href, pop])
+    status.end_inc()
 
     if zero > non_zero:
-        print()
-        print("WARNING: more than half sites returned zero pop")
+        status.warn("more than half sites returned zero pop")
 
 
 if __name__ == '__main__':
