@@ -2,10 +2,14 @@
 
 from __future__ import print_function
 import sys, os
+from modules.status import Status
+
+status = Status("consistency")
 
 def unique_dict_add(val, d):
     if val in d:
-        print("Error duplicate value:", val)
+        status.warn("duplicate value '{0}'".format(val))
+        status.verbose(d)
     else: d[val] = True
 
 def collect_node_tags(node, found):
@@ -18,14 +22,12 @@ def collect_node_tags(node, found):
 collect_model_tags = collect_node_tags
 
 def collect_item_tags(items, found):
-    print("items")
     for item in items:
         if "tags" in item:
             for tag in item["tags"]:
                 found[tag] = True
 
 def collect_order_tags(order, found):
-    print("orders")
     fiat_list = order["fiat"]
     crypto_list = order["crypto"]
 
@@ -40,8 +42,13 @@ def process(data):
     dItems = {}
     dOrder = {}
 
+    status.action("collect_model_tags")
     collect_model_tags(data.model, dModel)
+
+    status.action("collect_item_tags")
     collect_item_tags(data.sites, dItems)
+
+    status.action("collect_order_tags")
     collect_order_tags(data.order, dOrder)
 
 

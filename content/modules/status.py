@@ -21,8 +21,12 @@ class Status:
     module = begin_module
 
     def warning(self, *args):
-        print("WARNING: ", *args)
+        print("WARNING:", *args)
     warn = warning
+
+    def verbose(self, *content):
+        if self.is_verbose():
+            print(*content)
 
     def begin_action(self, action):
         action = action.upper().replace(" ", "_")
@@ -31,8 +35,13 @@ class Status:
         print(action)
     action = begin_action
 
+    def is_verbose(self):
+        if self.data and (self.mod_id in self.data.config.VERBOSE or "all" in self.data.config.VERBOSE):
+            return True
+        return False
+
     def inc(self, *inc):
-        if self.mod_id in self.data.config.VERBOSE or "all" in self.data.config.VERBOSE:
+        if self.is_verbose():
             for item in inc:
                 print(item)
         else:
