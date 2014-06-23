@@ -15,9 +15,9 @@ class Status:
     def begin_module(self, name=None):
         if name == None:
             name = self.mod_id
-        print("-" * 2 + "-" * len(name) + "-" * 9)
-        print("| " + name.upper() + "_MODULE |")
-        print("-" * 2 + "-" * len(name) + "-" * 9)
+        print("----" + "-" * len(name))
+        print("| " + name.upper() + " |")
+        print("----" + "-" * len(name))
     module = begin_module
 
     def warning(self, *args):
