@@ -1,0 +1,57 @@
+{
+    "par": "everything",
+    "id": "crypto",
+    "alias": ["cryptos", "cryptocurrency", "cyptocurrencies"],
+    "name": "Crypto",
+    "sub": [
+        {
+            "id": "btc",
+            "alias": ["bitcoin"],
+            "name": "[BTC] Bitcoin"
+        },
+        {
+            "id": "altcoins",
+            "alias": ["alt", "alts", "altcoin", "altcoins"],
+            "name": "Altcoins",
+            "sub": [
+                {
+                    "id": "auc",
+                    "alias": ["auroracoin"],
+                    "name": "[AUC] Auroracoin"
+                },
+                {
+                    "id": "doge",
+                    "alias": ["dogecoin"],
+                    "name": "[DOGE] Dogecoin"
+                },
+                {
+                    "id": "ltc",
+                    "alias": ["litecoin"],
+                    "name": "[LTC] Litecoin"
+                },
+                {
+                    "id": "zet",
+                    "alias": ["zetacoin"],
+                    "name": "[ZET] Zetacoin"
+                }
+            ]
+        },
+        {
+            "id": "nextgen",
+            "alias": ["nextgen", "secondgen", "2.0", "crypto2.0"],
+            "name": "SecondGen",
+            "sub": [
+                {
+                    "id": "nxt",
+                    "alias": ["nxtcoin"],
+                    "name": "[NXT] Nxt"
+                },
+                {
+                    "id": "xrp",
+                    "alias": ["ripple", "ripplecoin"],
+                    "name": ["[XRP] Ripple"]
+                }
+            ]
+        }
+    ]
+}
