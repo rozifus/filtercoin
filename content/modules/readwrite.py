@@ -59,6 +59,7 @@ def getModel(site_dir):
         for sub in subs[:]:
             target = get_matching_node(root, sub["par"])
             if target:
+                sub.pop("par")
                 target["sub"].append(sub)
                 subs.remove(sub)
     if subs:
