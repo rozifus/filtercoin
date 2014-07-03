@@ -6,7 +6,7 @@ if __name__ == "__main__":
 
     status = Status()
 
-    status.major("BUILD FILTERCOIN")
+    status.major("BUILD " + config.NAME)
 
     class Data(object):
         pass
@@ -39,5 +39,5 @@ if __name__ == "__main__":
     write.write_data(data)
 
 
-    status.major("FILTERCOIN BUILT!")
+    status.major(config.NAME + " BUILT!")
 

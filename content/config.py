@@ -1,4 +1,6 @@
 
+NAME           =   "FILTERCOIN"
+
 SITES_INPUT_DIR     =   "../raw/sites"
 SITES_OUTPUT        =   "../www/data/data.json"
 
