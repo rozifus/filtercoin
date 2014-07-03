@@ -2,20 +2,10 @@ import json
 import os
 from modules.status import Status
 
-def read_raw(site_dir):
-    status.action("get components")
-    f_list = []
-    for path,folders,files in os.walk(site_dir):
-        f_list.extend([path+os.sep+f for f in files])
+status = Status("MODEL")
 
-    subs = []
-    for f_loc in f_list:
-        subs.append(jsonFromFile(f_loc))
-
-    return subs
-
-def build(subs):
-    status.action("build model")
+def construct_tree(subs):
+    status.action("BUILD_TREE")
     root = None
     for sub in subs[:]:
         if not "par" in sub:
@@ -53,11 +43,6 @@ def build(subs):
 
     return root
 
-
-def read_raw(site_dir):
-    comps = getModelComponents(site_dir)
-    return buildModel(comps)
-
-
-
+def build(data):
+    data.model = construct_tree(data.raw_model)
 

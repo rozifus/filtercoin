@@ -4,7 +4,6 @@ from __future__ import print_function
 import sys, os
 import urllib
 from lxml.html import parse
-import modules.readwrite as rw
 from modules.status import Status
 
 

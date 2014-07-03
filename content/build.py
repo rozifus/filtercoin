@@ -15,13 +15,16 @@ if __name__ == "__main__":
     data.config = config
 
     status.task("read files")
-    readwrite.getData(data)
+    read.get_data(data)
 
     status.task("cccgen")
     cccgen.process(data)
 
     status.task("pairs")
     pairs.process(data)
+
+    status.task("build model")
+    model.build(data)
 
     status.task("consistency")
     consistency.process(data)
@@ -33,7 +36,8 @@ if __name__ == "__main__":
     compress.process(data)
 
     status.task("write site")
-    readwrite.writeData(data)
+    write.write_data(data)
+
 
     status.major("FILTERCOIN BUILT!")
 

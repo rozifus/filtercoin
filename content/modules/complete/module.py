@@ -4,7 +4,6 @@ from __future__ import print_function
 import sys, os
 from lxml.html import etree, parse
 import urllib
-import modules.readwrite as rw
 
 
 def process(data):

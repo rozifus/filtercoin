@@ -5,7 +5,6 @@ import sys, os
 import math, random
 from lxml.html import etree, parse
 import urllib
-import modules.readwrite as rw
 from modules.status import Status
 
 POP_SITE_BASE = "http://www.trafficestimate.com"
