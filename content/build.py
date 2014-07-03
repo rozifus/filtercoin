@@ -1,11 +1,12 @@
 import os,sys
-import modules.readwrite as rw
-from modules.status import Status
 import config
+from modules import *
 
 if __name__ == "__main__":
 
     status = Status()
+
+    status.major("BUILD FILTERCOIN")
 
     class Data(object):
         pass
@@ -13,25 +14,26 @@ if __name__ == "__main__":
     data = Data()
     data.config = config
 
-    rw.getData(data)
+    status.task("read files")
+    readwrite.getData(data)
 
-    active_modules = [
-        "cccgen",
-        #"autogen",
-        "normalize",
-        "pairs",
-        "consistency",
-        "pop",
-        "compress"
-    ]
+    status.task("cccgen")
+    cccgen.process(data)
 
-    for am in active_modules:
-        status.begin_module(am)
-        module_path = "modules." + am
-        module = __import__(module_path, fromlist=["process"])
-        module.process(data)
+    status.task("pairs")
+    pairs.process(data)
 
-    rw.writeData(data)
+    status.task("consistency")
+    consistency.process(data)
 
+    status.task("pop")
+    pop.process(data)
 
+    status.task("compress")
+    compress.process(data)
+
+    status.task("write site")
+    readwrite.writeData(data)
+
+    status.major("FILTERCOIN BUILT!")
 

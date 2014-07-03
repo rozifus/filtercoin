@@ -1,7 +1,16 @@
 from __future__ import print_function
 import sys
 
+RESET = '\033[0m'
+WARNING = '\033[93m'
+MAJOR = '\033[94m'
+FINISHED = '\033[92m'
+
+def set_color(color):
+    print(color, end="")
+
 class Status:
+
     def __init__(self, mod_id="NO_ID", data=None):
         self.connect_data(data)
         self.mod_id = mod_id
@@ -15,13 +24,33 @@ class Status:
     def begin_module(self, name=None):
         if name == None:
             name = self.mod_id
-        print("----" + "-" * len(name))
-        print("| " + name.upper() + " |")
-        print("----" + "-" * len(name))
+        self.task(name)
     module = begin_module
 
+    def task(self, task="UNNAMED_TASK"):
+        set_color(MAJOR)
+        print("# " + task.upper())
+        set_color(RESET)
+        #print("----" + "-" * len(task))
+        #print("| " + task.upper() + " |")
+        #print("----" + "-" * len(task))
+
+    def major(self, name="UNNAMED"):
+        set_color(MAJOR)
+        print("=" * (len(name) + 4))
+        print("# " + name.upper() + " #")
+        print("=" * (len(name) + 4))
+        set_color(RESET)
+
+    def end_point(self, text="NO TEXT"):
+        set_color(MAJOR)
+        print("# " + text.upper() + " #")
+        set_color(RESET)
+
     def warning(self, *args):
-        print("WARNING:", *args)
+        set_color(WARNING)
+        print("!", *args)
+        set_color(RESET)
     warn = warning
 
     def verbose(self, *content):
@@ -30,8 +59,8 @@ class Status:
 
     def begin_action(self, action):
         action = action.upper().replace(" ", "_")
-        if action[0] != ":":
-            action = ":" + action
+        if action[0] != ": ":
+            action = ": " + action
         print(action)
     action = begin_action
 

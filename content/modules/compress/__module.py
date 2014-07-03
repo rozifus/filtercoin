@@ -27,14 +27,13 @@ def compress(root):
         for item in root:
             compress(item)
     elif type(root) == type({}):
-        for k,v in root.items():
-            rcopy = root.copy()
+        rcopy = root.copy()
+        for k,v in rcopy.items():
             compress(v)
             del root[k]
             if k not in COMP.keys():
-                status.warn("unknown uncompressed key '{0}'".format(k))
+                status.warn("unknown uncompressed key '{0}' in site '{1}'".format(k, rcopy.get('name', "UNNAMED")))
                 status.verbose(rcopy)
-                print(rcopy)
             else:
                 root[COMP[k]] = v
 

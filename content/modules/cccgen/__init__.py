@@ -1,1 +1,1 @@
-from module import process
+from __module import process
