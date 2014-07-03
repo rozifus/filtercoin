@@ -6,20 +6,40 @@ from modules.status import Status
 
 status = Status("pairs")
 
-def buildModelPairs(data):
+def build_model_pair_components(data):
 
-    model_pair_tree = {"crypto/fiat": {}, "crypto/crypto": {}}
+    status.action("BUILD_MODEL_PAIR_COMPS")
 
-    for pair in data.model_pairs.keys():
+    masters = set([])
+    model_components = []
+
+    for pair in data.model_pairs:
         slave, master = pair.split("/")
-        if master in data.order['fiat']:
-            if model_pair_tree():
-                pass
+        masters.add(master)
 
+        mc = {}
+        mc["par"] = "crypto/" + master
+        mc["id"] = pair
+        mc["name"] = pair.upper()
+        mc["alias"] = ["/".join([master,slave])]
 
-def getDominance(data):
+        model_components.append(mc)
 
-    status.begin_action("GET_PAIR_DOMINANCE")
+    for master in masters:
+
+        mc = {}
+        mc["par"] = "pair"
+        mc["id"] = "crypto/" + master
+        mc["name"] = "Crypto/" + master.upper()
+        mc["alias"] = master + "/crypto"
+
+        model_components.append(mc)
+
+    data.raw_model.extend(model_components)
+
+def generate_dominance(data):
+
+    status.action("GEN_PAIR_DOMINANCE")
 
     dom = {}
     d = 1
@@ -29,7 +49,7 @@ def getDominance(data):
     for f in reversed(data.order['fiat']):
         dom[f] = d
         d += 1
-    return dom
+    data.pair_dominace = dom
 
 def dominantLast(a,b,dom):
     if a not in dom.keys():
@@ -54,23 +74,23 @@ def dominantLast(a,b,dom):
 def process(data):
 
     status.connect_data(data)
-    status.begin_action("NORMALIZE_PAIR_DOMINANCE")
+    generate_dominance(data)
+    normalize_dominance(data)
+    build_model_pair_components(data)
 
-    dom = getDominance(data)
-    pairs = {}
+def normalize_dominance(data):
+    status.action("NORMALIZE_PAIR_DOMINANCE")
+    pairs = set([])
     for site in data.sites:
         tags = site['tags']
         for ti in range(len(tags)):
             if "/" in tags[ti]:
                 a,b = tags[ti].split("/")
-                new_tag = "/".join(dominantLast(a,b,dom))
-                pairs[new_tag] = True
+                new_tag = "/".join(dominantLast(a,b,data.pair_dominance))
+                pairs.add(new_tag)
                 tags[ti] = new_tag
 
-    status.begin_action("BUILD_MODEL_PAIRS")
-
     data.model_pairs = pairs
-    buildModelPairs(data)
 
 
 
