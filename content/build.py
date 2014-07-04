@@ -13,6 +13,7 @@ if __name__ == "__main__":
     data.config = config
 
     status.major("BUILD " + config.NAME)
+
     active_modules = [
         "read",
         "cccgen",
