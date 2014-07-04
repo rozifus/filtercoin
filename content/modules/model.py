@@ -43,6 +43,6 @@ def construct_tree(subs):
 
     return root
 
-def build(data):
+def process(data):
     data.model = construct_tree(data.raw_model)
 

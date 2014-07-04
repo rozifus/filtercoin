@@ -19,7 +19,7 @@ def read_json_files(dir_head):
     return result
 
 
-def get_data(data):
+def process(data):
     status = Status("READ_DATA")
 
     status.begin_action("GET_SITES")

@@ -1,6 +1,6 @@
 {
     "name": "OKCoin",
-    "cccg": "okcoin",
+    "auto": ":okcoin",
     "href": "https://www.okcoin.com",
     "tags": [ "btc", "ltc", "cny", "trade" ]
 }

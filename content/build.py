@@ -1,12 +1,10 @@
 import os,sys
 import config
-from modules import *
+from modules.status import Status
 
 if __name__ == "__main__":
 
     status = Status()
-
-    status.major("BUILD " + config.NAME)
 
     class Data(object):
         pass
@@ -14,6 +12,29 @@ if __name__ == "__main__":
     data = Data()
     data.config = config
 
+    status.major("BUILD " + config.NAME)
+    active_modules = [
+        "read",
+        "cccgen",
+        "normalize",
+        "pairs",
+        "model",
+        "consistency",
+        "pop",
+        "clean",
+        "compress",
+        "write"
+    ]
+
+    for am in active_modules:
+        status.task(am)
+        module_path = "modules." + am
+        module = __import__(module_path, fromlist=["process"])
+        module.process(data)
+
+    status.major(config.NAME + " BUILT!")
+
+    """
     status.task("read files")
     read.get_data(data)
 
@@ -24,7 +45,7 @@ if __name__ == "__main__":
     pairs.process(data)
 
     status.task("build model")
-    model.build(data)
+    model.process(data)
 
     status.task("consistency")
     consistency.process(data)
@@ -40,7 +61,6 @@ if __name__ == "__main__":
 
     status.task("write site")
     write.write_data(data)
+    """
 
-
-    status.major(config.NAME + " BUILT!")
 

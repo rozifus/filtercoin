@@ -6,7 +6,7 @@ def jsonToFile(obj, file_loc):
     with open(file_loc, 'w') as f:
         json.dump(obj, f)
 
-def write_data(data):
+def process(data):
     status = Status("WRITE_DATA")
 
     status.begin_action("WRITE_SITES")
