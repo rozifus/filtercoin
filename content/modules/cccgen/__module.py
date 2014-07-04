@@ -61,7 +61,7 @@ def process(data):
                 e_keys.remove(s_key)
                 new_keys = exs[s_key]
                 if len(new_keys) > 0:
-                    site['tags'].extend(new_keys)
+                    site['tags'].extend([nk.lower() for nk in new_keys])
                 else:
                     status.warn("no trading pairs for", s_key)
             else:
