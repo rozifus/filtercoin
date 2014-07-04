@@ -13,6 +13,8 @@ def build_model_pair_components(data):
     masters = set([])
     model_components = []
 
+    print("mp:",len(data.model_pairs))
+
     for pair in data.model_pairs:
         slave, master = pair.split("/")
         masters.add(master)
@@ -37,6 +39,8 @@ def build_model_pair_components(data):
 
     data.raw_model.extend(model_components)
 
+    print("mc-count:", len(model_components), len(data.raw_model))
+
 def generate_dominance(data):
 
     status.action("GEN_PAIR_DOMINANCE")
@@ -49,7 +53,7 @@ def generate_dominance(data):
     for f in reversed(data.order['fiat']):
         dom[f] = d
         d += 1
-    data.pair_dominace = dom
+    data.pair_dominance = dom
 
 def dominantLast(a,b,dom):
     if a not in dom.keys():
@@ -85,6 +89,7 @@ def normalize_dominance(data):
         tags = site['tags']
         for ti in range(len(tags)):
             if "/" in tags[ti]:
+                print("tag")
                 a,b = tags[ti].split("/")
                 new_tag = "/".join(dominantLast(a,b,data.pair_dominance))
                 pairs.add(new_tag)

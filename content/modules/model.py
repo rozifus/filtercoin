@@ -35,7 +35,7 @@ def construct_tree(subs):
             target = get_matching_node(root, sub["par"])
             if target:
                 sub.pop("par")
-                target.setdefault("sub", list).append(sub)
+                target.setdefault("sub", []).append(sub)
                 subs.remove(sub)
     if subs:
         print("ERROR: model failed to build!")
