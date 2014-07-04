@@ -55,19 +55,28 @@ def generate_dominance(data):
         d += 1
     data.pair_dominance = dom
 
-def dominantLast(a,b,dom):
+def dominantLast(a,b,data):
+    dom = data.pair_dominance
+    mip = data.missing_pairs
     if a not in dom.keys():
         if b not in dom.keys():
-            status.warn("no order for both halves of pair", a, b)
+            if a not in mip or b not in mip:
+                mip.add(a)
+                mip.add(b)
+                status.warn("no order for both halves of pair", a, b)
             if a < b:
                 return b,a
             else:
                 return a,b
         else:
-            status.warn("no order for half pair", a)
+            if a not in mip:
+                mip.add(a)
+                status.warn("no order for half pair", a)
             return a,b
     elif b not in dom.keys():
-        status.warn("no order for half pair", b)
+        if b not in mip:
+            mip.add(b)
+            status.warn("no order for half pair", b)
         return b,a
     else:
         if dom[b] > dom[a]:
@@ -84,14 +93,14 @@ def process(data):
 
 def normalize_dominance(data):
     status.action("NORMALIZE_PAIR_DOMINANCE")
+    data.missing_pairs = set([])
     pairs = set([])
     for site in data.sites:
         tags = site['tags']
         for ti in range(len(tags)):
             if "/" in tags[ti]:
-                print("tag")
                 a,b = tags[ti].split("/")
-                new_tag = "/".join(dominantLast(a,b,data.pair_dominance))
+                new_tag = "/".join(dominantLast(a,b,data))
                 pairs.add(new_tag)
                 tags[ti] = new_tag
 

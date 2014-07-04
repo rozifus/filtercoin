@@ -1,11 +1,6 @@
 {
     "name": "BTC-e",
-    "auto": "exchange.btce",
+    "auto": ":btc-e",
     "href": "https://btc-e.com",
-    "tags": [ "trade", "btc", "ltc", "usd", "rur", "eur", "nmc" ],
-    "pair": [ "btc/usd", "btc/rur", "btc/eur", "btc/cnh", "btc/gbp",
-            "ltc/btc", "ltc/usd", "ltc/rur", "ltc/eur", "ltc/cnh",
-            "ltc/gdp", "nmc/btc", "nmc/usd", "nvc/btc", "nvc/usd",
-            "usd/rur", "eur/usd", "eur/rur", "usd/cnh", "gbp/usd",
-            "trc/btc", "ppc/btc", "ppc/usd", "ftc/btc", "xpm/btc" ]
+    "tags": [ ]
 }

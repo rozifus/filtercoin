@@ -55,8 +55,8 @@ def process(data):
     exs = getExchanges(data)
     e_keys = exs.keys()
     for site in data.sites:
-        if "auto" in site and site["auto"].startswith("cccg:"):
-            s_key = site['auto'][5:]
+        if "auto" in site and site["auto"].startswith(":"):
+            s_key = site['auto'][1:]
             if s_key in e_keys:
                 e_keys.remove(s_key)
                 new_keys = exs[s_key]
