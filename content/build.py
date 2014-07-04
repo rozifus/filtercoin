@@ -32,6 +32,9 @@ if __name__ == "__main__":
     status.task("pop")
     pop.process(data)
 
+    status.task("clean")
+    clean.process(data)
+
     status.task("compress")
     compress.process(data)
 

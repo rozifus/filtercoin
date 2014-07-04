@@ -1,5 +1,6 @@
 import autogen
 import cccgen
+import clean
 import complete
 import compress
 import consistency
