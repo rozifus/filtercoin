@@ -1,0 +1,7 @@
+{
+    "name": "FXBTC",
+    "auto": ":fxbtc",
+    "href": "http://www.fxbtc.com",
+    "dead": "shutdown",
+    "tags": [ ]
+}
