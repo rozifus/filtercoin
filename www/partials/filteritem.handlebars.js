@@ -8,7 +8,7 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n  <div class=\"ui title subs\">\n    <i class=\"large red icon dropdown\"></i>\n    <!--<div data-filter-id=\"";
+  buffer += "\n  <div class=\"ui title subs\">\n    <i class=\"large blue icon dropdown\"></i>\n    <!--<div data-filter-id=\"";
   if (helper = helpers.i) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.i); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -16,7 +16,7 @@ function program1(depth0,data) {
   if (helper = helpers.i) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.i); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\"class=\"add-filter ui fluid\">\n    ";
+    + "\" class=\"add-filter ui\">\n    ";
   if (helper = helpers.n) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.n); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
