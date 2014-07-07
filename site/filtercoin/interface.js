@@ -237,10 +237,11 @@
 
         jebi( INPUT_FILTERS ).on("input", inter.fullUpdate);
 
-        $('div.add-filter').click(function(event) {
+        $('span.add-filter').click(function(event) {
             if (event.stopPropagation) {
                 event.stopPropagation();
             }
+            console.log("shoop");
             if (event && event.currentTarget) {
                 addFilter($(event.currentTarget).attr('data-filter-id'));
 
@@ -279,12 +280,13 @@
 
         $('.ui.sidebar')
           .sidebar('attach events', '#button_addfilter')
-        ;
+       ;
 
         $('.ui.accordion').first()
           .accordion({
             'selector': {
               title: '.title.subs'
+              //title: '.hidden.selector'
             }
           })
         ;

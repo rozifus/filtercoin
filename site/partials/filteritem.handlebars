@@ -1,14 +1,15 @@
 {{# if s }}
   <div class="ui title subs">
-    <div data-filter-id="{{ i }}" class="add-filter ui circular button tiny icon">
+    <i class="large red icon dropdown"></i>
+    <!--<div data-filter-id="{{ i }}" class="filter ui circular button tiny icon">
       <i class="add icon"></i>
-    </div>
-    &nbsp;
+    </div>-->
+    <span data-filter-id="{{ i }}"class="add-filter ui fluid">
     {{ n }}
-    <i class="dropdown icon red"></i>
+    </span>
   </div>
   <div class="content">
-    <div class="ui accordion">
+    <div accordion-id="{{ i }}"class="ui accordion">
       {{# each s }}
         {{> filteritem }}
       {{/ each }}
@@ -16,11 +17,14 @@
   </div>
 {{ else }}
   <div class="title">
-    <div data-filter-id="{{ i }}" class="add-filter ui circular button tiny icon">
+    <i class="large icon dropdown whitify"></i>
+    <!--<div data-filter-id="{{ i }}" class="add-filter ui circular button tiny icon">
       <i class="add icon"></i>
-    </div>
-    <!--<i class="blue square add icon"></i>-->
-    &nbsp;{{ n }}
+    </div>-->
+    <!-- class="blue square add icon"></i>-->
+    <span data-filter-id="{{ i }}" class="add-filter ui">
+        {{ n }}
+    </span>
   </div>
 {{/ if }}
 

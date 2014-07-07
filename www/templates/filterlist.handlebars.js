@@ -6,7 +6,7 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   var buffer = "", stack1, self=this;
 
 
-  buffer += "<div class=\"ui accordion fluid\">\n  ";
+  buffer += "<div accordion-id=\"everything\" class=\"ui accordion fluid\">\n  ";
   stack1 = self.invokePartial(partials.filteritem, 'filteritem', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>\n";
