@@ -253,7 +253,16 @@
             } else {
                 console.log(":S!!! No event.currentTarget");
             }
-        })
+        });
+
+        $('.filter-detected').on('click', 'div.remove-filter', function(event) {
+
+            console.log("wat", event)
+
+            removeFilter($(event.currentTarget).attr('data-filter-id'));
+
+            inter.fullUpdate()
+        });
 
         cb(null);
     };
@@ -278,6 +287,27 @@
         infil.val(infil.val() + fid);
 
     };
+
+    var removeFilter = function(fid) {
+
+        var infil = jebi( INPUT_FILTERS ),
+            cur   = infil.val().trim();
+
+        var cur_len = cur.length + 1;
+        while(cur_len > cur.length) {
+            cur_len = cur.length;
+            cur.replace("  ", " ");
+        };
+
+        spl = cur.split(" ");
+        if (fid >= 0 && fid < spl.length) {
+            spl.splice(fid, 1);
+        }
+        cur = spl.join(" ")
+
+        infil.val(cur);
+
+    }
 
     var initSemanticModules = function(cb) {
 

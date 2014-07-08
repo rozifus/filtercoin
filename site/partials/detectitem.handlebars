@@ -1,7 +1,7 @@
 {{# if step }}
-    <i class="ui icon right arrow"></i>
+    <i class="ui icon filter"></i>
 {{/ if }}
-<div class="ui label">
+<div data-filter-id="{{ step }}" class="remove-filter ui button label">
   {{ name }}
   {{# unless unknown }}
   <div class="detail">

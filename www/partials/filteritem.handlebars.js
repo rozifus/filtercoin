@@ -20,7 +20,11 @@ function program1(depth0,data) {
   if (helper = helpers.i) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.i); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"title add-filter\">\n        All\n      </div>\n      ";
+    + "\" class=\"title add-filter\">\n        All ";
+  if (helper = helpers.n) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.n); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\n      </div>\n      ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.s), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </div>\n  </div>\n";
