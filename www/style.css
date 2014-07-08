@@ -60,7 +60,7 @@ i.dropdown {
 }
 
 i.whitify {
-    color: white;
+    color: white !important;
 }
 
 /*-------------------

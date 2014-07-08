@@ -1,22 +1,24 @@
 {{# if s }}
   <div class="ui title subs">
-    <i class="large blue icon dropdown"></i>
-    <span data-filter-id="{{ i }}" class="add-filter ui">
+    <b>
     {{ n }}
-    </span>
+    </b>
+    <i class="blue icon dropdown"></i>
   </div>
   <div class="content">
     <div accordion-id="{{ i }}"class="ui accordion">
+      <div data-filter-id="{{ i }}" class="title add-filter">
+        All
+      </div>
       {{# each s }}
         {{> filteritem }}
       {{/ each }}
     </div>
   </div>
 {{ else }}
-  <div class="title">
-    <i class="large icon dropdown whitify"></i>
-    <span data-filter-id="{{ i }}" class="add-filter ui">
-        {{ n }}
+  <div data-filter-id="{{ i }}" class="title add-filter">
+    <span class="blue">
+    {{ n }}
     </span>
   </div>
 {{/ if }}

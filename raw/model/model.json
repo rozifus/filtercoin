@@ -1,7 +1,7 @@
 {
-    "id": "everything",
+    "id": "filters",
     "alias": ["all", "everything"],
-    "name": "Everything",
+    "name": "Filters",
     "sub": [
         {
             "id": "charity",
@@ -195,7 +195,7 @@
         {
             "id": "wallet",
             "alias": [],
-            "name": "Wallet"
+            "name": "Wallets"
         }
     ]
 }

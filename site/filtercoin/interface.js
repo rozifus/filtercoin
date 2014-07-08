@@ -237,7 +237,7 @@
 
         jebi( INPUT_FILTERS ).on("input", inter.fullUpdate);
 
-        $('span.add-filter').click(function(event) {
+        $('div.add-filter').click(function(event) {
             if (event.stopPropagation) {
                 event.stopPropagation();
             }
@@ -245,8 +245,7 @@
             if (event && event.currentTarget) {
                 addFilter($(event.currentTarget).attr('data-filter-id'));
 
-                //$('.ui.accordion').first().accordion('close', 0);
-                $('.ui.sidebar').sidebar('hide');
+                //$('.ui.sidebar').sidebar('hide');
                 jebi( INPUT_FILTERS ).focus()
 
                 inter.fullUpdate()
@@ -255,6 +254,14 @@
                 console.log(":S!!! No event.currentTarget");
             }
         })
+
+        cb(null);
+    };
+
+    var openInterface = function(cb) {
+
+        $('.ui.accordion').first().accordion('open', 0);
+        $('.ui.sidebar').sidebar('show');
 
         cb(null);
     };
@@ -306,7 +313,8 @@
             genPathsAndAliases,
             genFilterTree,
             initSemanticModules,
-            bindControls
+            bindControls,
+            openInterface
         ]);
 
     }

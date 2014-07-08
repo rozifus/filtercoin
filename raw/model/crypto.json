@@ -1,5 +1,5 @@
 {
-    "par": "everything",
+    "par": "filters",
     "id": "crypto",
     "alias": ["cryptos", "cryptocurrency", "cyptocurrencies"],
     "name": "Crypto",
