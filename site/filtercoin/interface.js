@@ -257,8 +257,6 @@
 
         $('.filter-detected').on('click', 'div.remove-filter', function(event) {
 
-            console.log("wat", event)
-
             removeFilter($(event.currentTarget).attr('data-filter-id'));
 
             inter.fullUpdate()
