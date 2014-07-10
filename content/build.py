@@ -19,6 +19,7 @@ if __name__ == "__main__":
         "cccgen",
         "normalize",
         "pairs",
+        "implies",
         "model",
         "consistency",
         "pop",
