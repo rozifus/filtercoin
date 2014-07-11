@@ -6,6 +6,8 @@ WARNING = '\033[93m'
 MAJOR = '\033[94m'
 FINISHED = '\033[92m'
 
+INCREMENTS = 30
+
 def set_color(color):
     print(color, end="")
 
@@ -14,6 +16,8 @@ class Status:
     def __init__(self, mod_id="NO_ID", data=None):
         self.connect_data(data)
         self.mod_id = mod_id
+        self.inc_step = 1
+        self.inc_count = 0
 
     def set_mod_id(self, mod_id):
         self.mod_id = mod_id
@@ -69,14 +73,25 @@ class Status:
             return True
         return False
 
+
+    def start_inc(self, col_size):
+        self.inc_step = col_size / INCREMENTS
+        if self.inc_step < 1:
+            self.inc_step == 1
+        self.inc_count = 0
+
     def inc(self, *inc):
         if self.is_verbose():
             for item in inc:
                 print(item)
         else:
-            print(".",end="")
-            sys.stdout.flush()
+            self.inc_count += 1
+            if self.inc_count % self.inc_step == 0:
+                print(".",end="")
+                sys.stdout.flush()
 
     def end_inc(self):
+        self.inc_step = 1
+        self.inc_count = 0
         print()
 
