@@ -9,19 +9,19 @@
             "name": "Charity"
         },
         {
-            "id": "fiat",
-            "alias": ["currency", "currencies"],
-            "name": "Fiat",
+            "id": "currencies",
+            "name": "Currencies",
+            "alias": ["currency"],
             "sub": [
                 {
-                    "id": "aud",
-                    "alias": ["aud"],
-                    "name": "[AUD] Australian Dollar"
+                    "id": "crypto",
+                    "alias": ["cryptos", "cryptocurrency", "cyptocurrencies"],
+                    "name": "Crypto"
                 },
                 {
-                    "id": "usd",
-                    "alias": ["usd"],
-                    "name": "[USD] U.S. Dollar"
+                    "id": "fiat",
+                    "alias": ["monies", "money"],
+                    "name": "Fiat"
                 }
             ]
         },

@@ -44,6 +44,7 @@ def process(data):
     status.begin_action("FETCH_SITE_POP")
 
     zero, non_zero = 0.0,0.0
+    status.start_inc(len(data.sites))
     for d in data.sites:
         href = d["href"]
         pop = getPop(href)
