@@ -84,6 +84,11 @@ i.whitify {
     margin: 0em;
 }
 
+.filter-detected .remove-filter:hover {
+    text-decoration: line-through;
+}
+
+
 
 /*-------------------
         Results
