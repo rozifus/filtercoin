@@ -1,0 +1,48 @@
+
+
+===STRUCTURE===
+
+Data
+|
++-Currencies
+|
++-Exchanges
+|
++-Sites
+
+Model
+|
++-Currencies -> currencies
+
+
+Scrape
+|
++-Currencies
+|
++-Exchanges
+|
++-Sites
+
+PIPELINE
+========
+Raw (read)
+ |
+Auto (cccgen)
+ |
+Normalize
+ |
+Pairs
+ |
+Implies
+ |
+Model
+ |
+Consistency
+ |
+Pop
+ |
+Clean
+ |
+Compress
+ |
+Write
