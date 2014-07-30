@@ -36,33 +36,5 @@ if __name__ == "__main__":
 
     status.major(config.NAME + " BUILT!")
 
-    """
-    status.task("read files")
-    read.get_data(data)
-
-    status.task("cccgen")
-    cccgen.process(data)
-
-    status.task("pairs")
-    pairs.process(data)
-
-    status.task("build model")
-    model.process(data)
-
-    status.task("consistency")
-    consistency.process(data)
-
-    status.task("pop")
-    pop.process(data)
-
-    status.task("clean")
-    clean.process(data)
-
-    status.task("compress")
-    compress.process(data)
-
-    status.task("write site")
-    write.write_data(data)
-    """
 
 
